@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Button, Divider } from '@material-ui/core';
+import { Box, Button, Divider, Modal, Fade } from '@material-ui/core';
 import ExtensionIcon from '@material-ui/icons/Extension';
 import TimerIcon from '@material-ui/icons/Timer';
 import Konva from 'konva';
 import { Stage, Layer, Group, Rect, Line, Image } from 'react-konva';
 import useImage from 'use-image';
+import _shuffle from 'lodash/shuffle';
 
 const TimeCounter = ({ hour, minutes, seconds }) => {
   return (
@@ -77,10 +78,121 @@ Guide.propTypes = {
   pieceTotalCount: PropTypes.number.isRequired,
 };
 
+const SelectDifficultyModal = ({ open, handleSelectDifficulty }) => {
+  return (
+    <Modal
+      aria-labelledby="transition-modal-title"
+      aria-describedby="transition-modal-description"
+      open={open}
+      closeAfterTransition
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Fade in={open}>
+        <Box
+          p={4}
+          width={400}
+          bgcolor="background.paper"
+          boxShadow={3}
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+        >
+          <h2 id="transition-modal-title">難易度選択</h2>
+          <p id="transition-modal-description">
+            難易度に応じて、ピース数が変わります。
+          </p>
+          <Box p={2}>
+            <Button
+              variant="contained"
+              style={{ color: 'white', backgroundColor: 'green' }}
+              onClick={() => handleSelectDifficulty('easy')}
+            >
+              初級（24ピース）
+            </Button>
+          </Box>
+          <Box p={2}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => handleSelectDifficulty('normal')}
+            >
+              中級（54ピース）
+            </Button>
+          </Box>
+          <Box p={2}>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => handleSelectDifficulty('hard')}
+            >
+              上級（96ピース）
+            </Button>
+          </Box>
+        </Box>
+      </Fade>
+    </Modal>
+  );
+};
+
+SelectDifficultyModal.propTypes = {
+  open: PropTypes.bool.isRequired,
+  handleSelectDifficulty: PropTypes.func.isRequired,
+};
+
 const App = () => {
+  const [difficultyModalOpen, setDifficultyModalOpen] = useState(true);
   const [matchPieceCount, setMatchPieceCount] = useState(0);
-  const pieceTotalCount = 24;
-  // const [pieceTotalCount, setPieceTotalCount] = useState(24);
+  const [pieceXCount, setPieceXCount] = useState(6);
+  const [pieceYCount, setPieceYCount] = useState(4);
+  const [pieceSize, setPieceSize] = useState(120);
+  const [shuffledPieceInfo, setShuffledPieceInfo] = useState([]);
+
+  const initialPiece = () => {
+    const pieceInfo = [];
+    for (let y = 0; y < pieceYCount; y += 1) {
+      for (let x = 0; x < pieceXCount; x += 1) {
+        pieceInfo.push({
+          key: `${y}-${x}`,
+          crop: {
+            x: pieceSize * x,
+            y: pieceSize * y,
+            width: pieceSize,
+            height: pieceSize,
+          },
+          width: pieceSize,
+          height: pieceSize,
+        });
+      }
+    }
+    setShuffledPieceInfo(_shuffle(pieceInfo));
+  };
+  const handleSelectDifficulty = async (diffculty) => {
+    switch (diffculty) {
+      case 'easy':
+        setPieceXCount(6);
+        setPieceYCount(4);
+        setPieceSize(120);
+        break;
+      case 'normal':
+        setPieceXCount(9);
+        setPieceYCount(6);
+        setPieceSize(80);
+        break;
+      case 'hard':
+        setPieceXCount(12);
+        setPieceYCount(8);
+        setPieceSize(60);
+        break;
+      default:
+        console.log('test');
+    }
+    initialPiece();
+    setDifficultyModalOpen(false);
+  };
   const checkNumber = (pieceNum, fixedPosition) => {
     if (pieceNum > fixedPosition + 20 || pieceNum < fixedPosition - 20) {
       return false;
@@ -108,11 +220,15 @@ const App = () => {
       shadowOffsetY: 5,
     };
     if (
-      checkNumber(e.target.attrs.x, 600) &&
-      checkNumber(e.target.attrs.y, 120)
+      checkNumber(e.target.attrs.x, e.target.attrs.cropX) &&
+      checkNumber(e.target.attrs.y, e.target.attrs.cropY)
     ) {
       setMatchPieceCount((count) => count + 1);
-      Object.assign(update, { draggable: false, x: 600, y: 120 });
+      Object.assign(update, {
+        draggable: false,
+        x: e.target.attrs.cropX,
+        y: e.target.attrs.cropY,
+      });
     }
     e.target.to(update);
   };
@@ -126,12 +242,13 @@ const App = () => {
   const stageWidth = window.innerWidth;
   const stageHeight = imageHeight + flameWidth * 2 + padding * 2;
   const imageFlameX = stageWidth / 2 - (imageWidth + flameWidth * 2) / 2;
+  const initialPieceSpaceX = -180;
 
   return (
     <div>
       <Guide
         matchPieceCount={matchPieceCount}
-        pieceTotalCount={pieceTotalCount}
+        pieceTotalCount={pieceXCount * pieceYCount}
       />
       <Divider />
       <Stage width={stageWidth} height={stageHeight}>
@@ -288,95 +405,28 @@ const App = () => {
         </Layer>
         <Layer>
           <Group x={imageFlameX + flameWidth} y={padding + flameWidth}>
-            <Image
-              image={image}
-              crop={{ x: 0, y: 0, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-            />
-            <Image
-              image={image}
-              crop={{ x: 120, y: 0, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-            />
-            <Image
-              image={image}
-              crop={{ x: 240, y: 0, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-            />
-            <Image
-              image={image}
-              crop={{ x: 360, y: 0, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-            />
-            <Image
-              image={image}
-              crop={{ x: 480, y: 0, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-            />
-            <Image
-              image={image}
-              crop={{ x: 600, y: 0, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-            />
-            <Image
-              image={image}
-              crop={{ x: 0, y: 120, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-            />
-            <Image
-              image={image}
-              crop={{ x: 120, y: 120, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-            />
-            <Image
-              image={image}
-              crop={{ x: 240, y: 120, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-            />
-            <Image
-              image={image}
-              crop={{ x: 360, y: 120, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-            />
-            <Image
-              image={image}
-              crop={{ x: 480, y: 120, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-            />
-            <Image
-              image={image}
-              crop={{ x: 600, y: 120, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-              onDragStart={handleDragStart}
-              onDragEnd={handleDragEnd}
-            />
+            {shuffledPieceInfo.map((piece) => {
+              return (
+                <Image
+                  key={piece.key}
+                  image={image}
+                  crop={piece.crop}
+                  width={piece.width}
+                  height={piece.height}
+                  x={initialPieceSpaceX}
+                  draggable
+                  onDragStart={handleDragStart}
+                  onDragEnd={handleDragEnd}
+                />
+              );
+            })}
           </Group>
         </Layer>
       </Stage>
+      <SelectDifficultyModal
+        open={difficultyModalOpen}
+        handleSelectDifficulty={handleSelectDifficulty}
+      />
     </div>
   );
 };
