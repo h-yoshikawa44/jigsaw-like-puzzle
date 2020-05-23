@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Button, Divider } from '@material-ui/core';
+import { Box, Button, Divider, Modal, Fade } from '@material-ui/core';
 import ExtensionIcon from '@material-ui/icons/Extension';
 import TimerIcon from '@material-ui/icons/Timer';
 import Konva from 'konva';
 import { Stage, Layer, Group, Rect, Line, Image } from 'react-konva';
 import useImage from 'use-image';
+import _shuffle from 'lodash/shuffle';
 
 const TimeCounter = ({ hour, minutes, seconds }) => {
   return (
@@ -22,12 +23,213 @@ TimeCounter.propTypes = {
   seconds: PropTypes.string.isRequired,
 };
 
-const Guide = ({ matchPieceCount, pieceTotalCount }) => {
+const Guide = ({
+  matchPieceCount,
+  pieceTotalCount,
+  hour,
+  minutes,
+  seconds,
+  handlePauseAction,
+}) => {
+  return (
+    <Box display="flex" justifyContent="center" alignItems="center">
+      <Box m={2} fontSize="1.8rem">
+        <ExtensionIcon style={{ paddingRight: '5px' }} />
+        {`${matchPieceCount} / ${pieceTotalCount}`}
+      </Box>
+      <TimeCounter hour={hour} minutes={minutes} seconds={seconds} />
+      <Box m={2}>
+        <Button onClick={handlePauseAction} variant="contained" color="primary">
+          一時停止
+        </Button>
+      </Box>
+    </Box>
+  );
+};
+
+Guide.propTypes = {
+  matchPieceCount: PropTypes.number.isRequired,
+  pieceTotalCount: PropTypes.number.isRequired,
+  hour: PropTypes.string.isRequired,
+  minutes: PropTypes.string.isRequired,
+  seconds: PropTypes.string.isRequired,
+  handlePauseAction: PropTypes.func.isRequired,
+};
+
+const SelectDifficultyModal = ({ open, handleSelectDifficultyAction }) => {
+  return (
+    <Modal
+      aria-labelledby="transition-modal-title"
+      aria-describedby="transition-modal-description"
+      open={open}
+      closeAfterTransition
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Fade in={open}>
+        <Box
+          p={4}
+          width={400}
+          bgcolor="background.paper"
+          boxShadow={3}
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+        >
+          <h2 id="transition-modal-title">難易度選択</h2>
+          <p id="transition-modal-description">
+            難易度に応じて、ピース数が変わります
+          </p>
+          <Box p={2}>
+            <Button
+              variant="contained"
+              style={{ color: 'white', backgroundColor: 'green' }}
+              onClick={() => handleSelectDifficultyAction('easy')}
+            >
+              初級（24ピース）
+            </Button>
+          </Box>
+          <Box p={2}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => handleSelectDifficultyAction('normal')}
+            >
+              中級（54ピース）
+            </Button>
+          </Box>
+          <Box p={2}>
+            <Button
+              variant="contained"
+              color="secondary"
+              onClick={() => handleSelectDifficultyAction('hard')}
+            >
+              上級（96ピース）
+            </Button>
+          </Box>
+        </Box>
+      </Fade>
+    </Modal>
+  );
+};
+
+SelectDifficultyModal.propTypes = {
+  open: PropTypes.bool.isRequired,
+  handleSelectDifficultyAction: PropTypes.func.isRequired,
+};
+
+const PauseModal = ({ open, handlePauseReleseAction }) => {
+  return (
+    <Modal
+      aria-labelledby="transition-modal-title"
+      aria-describedby="transition-modal-description"
+      open={open}
+      closeAfterTransition
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Fade in={open}>
+        <Box
+          p={4}
+          width={400}
+          bgcolor="background.paper"
+          boxShadow={3}
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+        >
+          <h2 id="transition-modal-title">一時停止中</h2>
+          <p id="transition-modal-description">疲れたときは小休憩</p>
+          <Box p={2}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => handlePauseReleseAction()}
+            >
+              復帰
+            </Button>
+          </Box>
+        </Box>
+      </Fade>
+    </Modal>
+  );
+};
+
+PauseModal.propTypes = {
+  open: PropTypes.bool.isRequired,
+  handlePauseReleseAction: PropTypes.func.isRequired,
+};
+
+const CompleteModal = ({
+  open,
+  hour,
+  minutes,
+  seconds,
+  handleRestartAction,
+}) => {
+  return (
+    <Modal
+      aria-labelledby="transition-modal-title"
+      aria-describedby="transition-modal-description"
+      open={open}
+      closeAfterTransition
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+      }}
+    >
+      <Fade in={open}>
+        <Box
+          p={4}
+          width={400}
+          bgcolor="background.paper"
+          boxShadow={3}
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+        >
+          <h2 id="transition-modal-title">Congratulations！</h2>
+          <p id="transition-modal-description">お疲れさまでしたー</p>
+          <Box p={2} fontSize="1.8rem">
+            {`クリアタイム：${hour}:${minutes}:${seconds}`}
+          </Box>
+          <Box p={2}>
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => handleRestartAction()}
+            >
+              再チャレンジ
+            </Button>
+          </Box>
+        </Box>
+      </Fade>
+    </Modal>
+  );
+};
+
+CompleteModal.propTypes = {
+  open: PropTypes.bool.isRequired,
+  hour: PropTypes.string.isRequired,
+  minutes: PropTypes.string.isRequired,
+  seconds: PropTypes.string.isRequired,
+  handleRestartAction: PropTypes.func.isRequired,
+};
+
+const App = () => {
   const [hour, setHour] = useState('00');
   const [minutes, setMinutes] = useState('00');
   const [seconds, setSeconds] = useState('00');
   const [timerId, setTimerId] = useState(0);
   let time = 0;
+  const [backupTime, setBackupTime] = useState(0);
 
   const parseHours = () => {
     return `00${parseInt(time / 60 / 60, 10)}`.slice(-2);
@@ -39,10 +241,14 @@ const Guide = ({ matchPieceCount, pieceTotalCount }) => {
     return `00${parseInt(time % 60, 10)}`.slice(-2);
   };
   const timeCount = () => {
+    if (!time && backupTime) {
+      time = backupTime;
+    }
     time += 1;
     setHour(parseHours());
     setMinutes(parseMinutes());
     setSeconds(parseSeconds());
+    setBackupTime(time);
   };
   const timerStart = () => {
     setTimerId(setInterval(timeCount, 1000));
@@ -51,36 +257,94 @@ const Guide = ({ matchPieceCount, pieceTotalCount }) => {
     clearInterval(timerId);
   };
 
-  return (
-    <Box display="flex" justifyContent="center" alignItems="center">
-      <Box m={2} fontSize="1.8rem">
-        <ExtensionIcon style={{ paddingRight: '5px' }} />
-        {`${matchPieceCount} / ${pieceTotalCount}`}
-      </Box>
-      <TimeCounter hour={hour} minutes={minutes} seconds={seconds} />
-      <Box m={2}>
-        <Button onClick={timerStart} variant="contained" color="primary">
-          開始
-        </Button>
-      </Box>
-      <Box m={2}>
-        <Button onClick={timeStop} variant="contained" color="primary">
-          一時停止
-        </Button>
-      </Box>
-    </Box>
-  );
-};
-
-Guide.propTypes = {
-  matchPieceCount: PropTypes.number.isRequired,
-  pieceTotalCount: PropTypes.number.isRequired,
-};
-
-const App = () => {
+  const [difficultyModalOpen, setDifficultyModalOpen] = useState(true);
+  const [pauseModalOpen, setPauseModalOpen] = useState(false);
+  const [completeModalOpen, setCompleteModalOpen] = useState(false);
   const [matchPieceCount, setMatchPieceCount] = useState(0);
-  const pieceTotalCount = 24;
-  // const [pieceTotalCount, setPieceTotalCount] = useState(24);
+  const [pieceXCount, setPieceXCount] = useState(0);
+  const [pieceYCount, setPieceYCount] = useState(0);
+  const [pieceSize, setPieceSize] = useState(0);
+  const [shuffledPieceInfo, setShuffledPieceInfo] = useState([]);
+
+  const handlePauseAction = () => {
+    timeStop();
+    setPauseModalOpen(true);
+  };
+  useEffect(() => {
+    const initialPiece = () => {
+      const pieceInfo = [];
+      const randomKey = Math.random().toString(32).substring(2);
+      for (let y = 0; y < pieceYCount; y += 1) {
+        for (let x = 0; x < pieceXCount; x += 1) {
+          pieceInfo.push({
+            key: `${y}-${x}-${randomKey}`,
+            crop: {
+              x: pieceSize * x,
+              y: pieceSize * y,
+              width: pieceSize,
+              height: pieceSize,
+            },
+            width: pieceSize,
+            height: pieceSize,
+          });
+        }
+      }
+      setShuffledPieceInfo(_shuffle(pieceInfo));
+    };
+    if (pieceXCount && pieceYCount && pieceSize) {
+      initialPiece();
+    }
+  }, [pieceXCount, pieceYCount, pieceSize]);
+
+  useEffect(() => {
+    const complete = () => {
+      setCompleteModalOpen(true);
+    };
+    if (matchPieceCount && matchPieceCount === pieceXCount * pieceYCount) {
+      timeStop();
+      setTimeout(complete, 1500);
+    }
+  }, [matchPieceCount]);
+
+  const handleSelectDifficultyAction = async (diffculty) => {
+    switch (diffculty) {
+      case 'easy':
+        setPieceXCount(6);
+        setPieceYCount(4);
+        setPieceSize(120);
+        break;
+      case 'normal':
+        setPieceXCount(9);
+        setPieceYCount(6);
+        setPieceSize(80);
+        break;
+      case 'hard':
+        setPieceXCount(12);
+        setPieceYCount(8);
+        setPieceSize(60);
+        break;
+      default:
+        console.log('error');
+    }
+    // initialPiece();
+    setDifficultyModalOpen(false);
+    timerStart();
+  };
+  const handlePauseReleseAction = () => {
+    setPauseModalOpen(false);
+    timerStart();
+  };
+  const handleRestartAction = () => {
+    setCompleteModalOpen(false);
+    setHour('00');
+    setMinutes('00');
+    setSeconds('00');
+    setBackupTime(0);
+    setPieceXCount(0);
+    setPieceYCount(0);
+    setMatchPieceCount(0);
+    setDifficultyModalOpen(true);
+  };
   const checkNumber = (pieceNum, fixedPosition) => {
     if (pieceNum > fixedPosition + 20 || pieceNum < fixedPosition - 20) {
       return false;
@@ -108,11 +372,15 @@ const App = () => {
       shadowOffsetY: 5,
     };
     if (
-      checkNumber(e.target.attrs.x, 600) &&
-      checkNumber(e.target.attrs.y, 120)
+      checkNumber(e.target.attrs.x, e.target.attrs.cropX) &&
+      checkNumber(e.target.attrs.y, e.target.attrs.cropY)
     ) {
       setMatchPieceCount((count) => count + 1);
-      Object.assign(update, { draggable: false, x: 600, y: 120 });
+      Object.assign(update, {
+        draggable: false,
+        x: e.target.attrs.cropX,
+        y: e.target.attrs.cropY,
+      });
     }
     e.target.to(update);
   };
@@ -126,12 +394,17 @@ const App = () => {
   const stageWidth = window.innerWidth;
   const stageHeight = imageHeight + flameWidth * 2 + padding * 2;
   const imageFlameX = stageWidth / 2 - (imageWidth + flameWidth * 2) / 2;
+  const initialPieceSpaceX = -180;
 
   return (
     <div>
       <Guide
         matchPieceCount={matchPieceCount}
-        pieceTotalCount={pieceTotalCount}
+        pieceTotalCount={pieceXCount * pieceYCount}
+        hour={hour}
+        minutes={minutes}
+        seconds={seconds}
+        handlePauseAction={handlePauseAction}
       />
       <Divider />
       <Stage width={stageWidth} height={stageHeight}>
@@ -288,95 +561,39 @@ const App = () => {
         </Layer>
         <Layer>
           <Group x={imageFlameX + flameWidth} y={padding + flameWidth}>
-            <Image
-              image={image}
-              crop={{ x: 0, y: 0, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-            />
-            <Image
-              image={image}
-              crop={{ x: 120, y: 0, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-            />
-            <Image
-              image={image}
-              crop={{ x: 240, y: 0, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-            />
-            <Image
-              image={image}
-              crop={{ x: 360, y: 0, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-            />
-            <Image
-              image={image}
-              crop={{ x: 480, y: 0, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-            />
-            <Image
-              image={image}
-              crop={{ x: 600, y: 0, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-            />
-            <Image
-              image={image}
-              crop={{ x: 0, y: 120, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-            />
-            <Image
-              image={image}
-              crop={{ x: 120, y: 120, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-            />
-            <Image
-              image={image}
-              crop={{ x: 240, y: 120, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-            />
-            <Image
-              image={image}
-              crop={{ x: 360, y: 120, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-            />
-            <Image
-              image={image}
-              crop={{ x: 480, y: 120, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-            />
-            <Image
-              image={image}
-              crop={{ x: 600, y: 120, width: 120, height: 120 }}
-              width={120}
-              height={120}
-              draggable
-              onDragStart={handleDragStart}
-              onDragEnd={handleDragEnd}
-            />
+            {shuffledPieceInfo.map((piece) => {
+              return (
+                <Image
+                  key={piece.key}
+                  image={image}
+                  crop={piece.crop}
+                  width={piece.width}
+                  height={piece.height}
+                  x={initialPieceSpaceX}
+                  draggable
+                  onDragStart={handleDragStart}
+                  onDragEnd={handleDragEnd}
+                />
+              );
+            })}
           </Group>
         </Layer>
       </Stage>
+      <SelectDifficultyModal
+        open={difficultyModalOpen}
+        handleSelectDifficultyAction={handleSelectDifficultyAction}
+      />
+      <PauseModal
+        open={pauseModalOpen}
+        handlePauseReleseAction={handlePauseReleseAction}
+      />
+      <CompleteModal
+        open={completeModalOpen}
+        hour={hour}
+        minutes={minutes}
+        seconds={seconds}
+        handleRestartAction={handleRestartAction}
+      />
     </div>
   );
 };
