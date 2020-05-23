@@ -281,7 +281,7 @@ const Puzzle = () => {
       for (let y = 0; y < pieceYCount; y += 1) {
         for (let x = 0; x < pieceXCount; x += 1) {
           pieceInfo.push({
-            key: `${y}-${x}-${randomKey}`,
+            id: `${y}-${x}-${randomKey}`,
             crop: {
               x: pieceSize * x,
               y: pieceSize * y,
@@ -364,6 +364,13 @@ const Puzzle = () => {
       scaleX: 1.1,
       scaleY: 1.1,
     });
+    const { id } = e.target.attrs;
+    const items = shuffledPieceInfo.slice();
+    const item = items.find((i) => i.id === id);
+    const index = items.indexOf(item);
+    items.splice(index, 1);
+    items.push(item);
+    setShuffledPieceInfo(items);
   };
   const handleDragEnd = (e) => {
     console.log(e.target);
@@ -568,7 +575,8 @@ const Puzzle = () => {
             {shuffledPieceInfo.map((piece) => {
               return (
                 <Image
-                  key={piece.key}
+                  key={piece.id}
+                  id={piece.id}
                   image={image}
                   crop={piece.crop}
                   width={piece.width}
