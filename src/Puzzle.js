@@ -1,19 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Box, Button, Divider, Fade, Modal } from '@material-ui/core';
+import { Box, Divider, Fade, Modal } from '@material-ui/core';
 import ExtensionIcon from '@material-ui/icons/Extension';
 import TimerIcon from '@material-ui/icons/Timer';
 import Konva from 'konva';
 import { Stage, Layer, Group, Rect, Line, Image } from 'react-konva';
 import useImage from 'use-image';
 import _shuffle from 'lodash/shuffle';
+import Counter from './atoms/Counter';
+import ScoreCounter from './atoms/ScoreCounter';
+import PrimaryButton from './atoms/PrimaryButton';
+import DifficultyButton from './atoms/DifficultyButton';
 
 const TimeCounter = ({ hour, minutes, seconds }) => {
   return (
     <Box m={2} fontSize="1.8rem">
       <TimerIcon style={{ paddingRight: '5px' }} />
-      {`${hour}:${minutes}:${seconds}`}
+      <Counter hour={hour} minutes={minutes} seconds={seconds} />
     </Box>
   );
 };
@@ -36,13 +40,11 @@ const Guide = ({
     <Box display="flex" justifyContent="center" alignItems="center">
       <Box m={2} fontSize="1.8rem">
         <ExtensionIcon style={{ paddingRight: '5px' }} />
-        {`${matchPieceCount} / ${pieceTotalCount}`}
+        <ScoreCounter count={matchPieceCount} totalCount={pieceTotalCount} />
       </Box>
       <TimeCounter hour={hour} minutes={minutes} seconds={seconds} />
       <Box m={2}>
-        <Button onClick={handlePauseAction} variant="contained" color="primary">
-          一時停止
-        </Button>
+        <PrimaryButton text="一時停止" onClickAction={handlePauseAction} />
       </Box>
     </Box>
   );
@@ -85,31 +87,22 @@ const SelectDifficultyModal = ({ open, handleSelectDifficultyAction }) => {
             難易度に応じて、ピース数が変わります
           </p>
           <Box p={2}>
-            <Button
-              variant="contained"
-              style={{ color: 'white', backgroundColor: 'green' }}
-              onClick={() => handleSelectDifficultyAction('easy')}
-            >
-              初級（24ピース）
-            </Button>
+            <DifficultyButton
+              difficulty="easy"
+              onClickAction={handleSelectDifficultyAction}
+            />
           </Box>
           <Box p={2}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => handleSelectDifficultyAction('normal')}
-            >
-              中級（54ピース）
-            </Button>
+            <DifficultyButton
+              difficulty="normal"
+              onClickAction={handleSelectDifficultyAction}
+            />
           </Box>
           <Box p={2}>
-            <Button
-              variant="contained"
-              color="secondary"
-              onClick={() => handleSelectDifficultyAction('hard')}
-            >
-              上級（96ピース）
-            </Button>
+            <DifficultyButton
+              difficulty="hard"
+              onClickAction={handleSelectDifficultyAction}
+            />
           </Box>
           <Box mt={6} fontSize="0.8rem">
             <Link to="/policy">当サービスについて</Link>
@@ -151,13 +144,10 @@ const PauseModal = ({ open, handlePauseReleseAction }) => {
           <h2 id="transition-modal-title">一時停止中</h2>
           <p id="transition-modal-description">疲れたときは小休憩</p>
           <Box p={2}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => handlePauseReleseAction()}
-            >
-              復帰
-            </Button>
+            <PrimaryButton
+              text="復帰"
+              onClickAction={handlePauseReleseAction}
+            />
           </Box>
         </Box>
       </Fade>
@@ -205,13 +195,10 @@ const CompleteModal = ({
             {`クリアタイム：${hour}:${minutes}:${seconds}`}
           </Box>
           <Box p={2}>
-            <Button
-              variant="contained"
-              color="primary"
-              onClick={() => handleRestartAction()}
-            >
-              再チャレンジ
-            </Button>
+            <PrimaryButton
+              text="再チャレンジ"
+              onClickAction={handleRestartAction}
+            />
           </Box>
         </Box>
       </Fade>
