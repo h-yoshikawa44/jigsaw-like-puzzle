@@ -1,201 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
-import { Box, Divider, Fade, Modal } from '@material-ui/core';
+import { Divider } from '@material-ui/core';
 import Konva from 'konva';
 import { Stage, Layer, Group, Rect, Line, Image } from 'react-konva';
 import useImage from 'use-image';
 import _shuffle from 'lodash/shuffle';
-import PrimaryButton from './atoms/PrimaryButton';
-import DifficultyButton from './atoms/DifficultyButton';
-import PieceCounter from './molecules/PieceCounter';
-import TimeCounter from './molecules/TimeCounter';
-
-const Guide = ({
-  matchPieceCount,
-  pieceTotalCount,
-  hour,
-  minutes,
-  seconds,
-  handlePauseAction,
-}) => {
-  return (
-    <Box display="flex" justifyContent="center" alignItems="center">
-      <PieceCounter
-        matchPieceCount={matchPieceCount}
-        pieceTotalCount={pieceTotalCount}
-      />
-      <TimeCounter hour={hour} minutes={minutes} seconds={seconds} />
-      <Box m={2}>
-        <PrimaryButton text="一時停止" onClickAction={handlePauseAction} />
-      </Box>
-    </Box>
-  );
-};
-
-Guide.propTypes = {
-  matchPieceCount: PropTypes.number.isRequired,
-  pieceTotalCount: PropTypes.number.isRequired,
-  hour: PropTypes.string.isRequired,
-  minutes: PropTypes.string.isRequired,
-  seconds: PropTypes.string.isRequired,
-  handlePauseAction: PropTypes.func.isRequired,
-};
-
-const SelectDifficultyModal = ({ open, handleSelectDifficultyAction }) => {
-  return (
-    <Modal
-      aria-labelledby="transition-modal-title"
-      aria-describedby="transition-modal-description"
-      open={open}
-      closeAfterTransition
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Fade in={open}>
-        <Box
-          p={4}
-          width={400}
-          bgcolor="background.paper"
-          boxShadow={3}
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-        >
-          <h2 id="transition-modal-title">難易度選択</h2>
-          <p id="transition-modal-description">
-            難易度に応じて、ピース数が変わります
-          </p>
-          <Box p={2}>
-            <DifficultyButton
-              difficulty="easy"
-              onClickAction={handleSelectDifficultyAction}
-            />
-          </Box>
-          <Box p={2}>
-            <DifficultyButton
-              difficulty="normal"
-              onClickAction={handleSelectDifficultyAction}
-            />
-          </Box>
-          <Box p={2}>
-            <DifficultyButton
-              difficulty="hard"
-              onClickAction={handleSelectDifficultyAction}
-            />
-          </Box>
-          <Box mt={6} fontSize="0.8rem">
-            <Link to="/policy">当サービスについて</Link>
-          </Box>
-        </Box>
-      </Fade>
-    </Modal>
-  );
-};
-
-SelectDifficultyModal.propTypes = {
-  open: PropTypes.bool.isRequired,
-  handleSelectDifficultyAction: PropTypes.func.isRequired,
-};
-
-const PauseModal = ({ open, handlePauseReleseAction }) => {
-  return (
-    <Modal
-      aria-labelledby="transition-modal-title"
-      aria-describedby="transition-modal-description"
-      open={open}
-      closeAfterTransition
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Fade in={open}>
-        <Box
-          p={4}
-          width={400}
-          bgcolor="background.paper"
-          boxShadow={3}
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-        >
-          <h2 id="transition-modal-title">一時停止中</h2>
-          <p id="transition-modal-description">疲れたときは小休憩</p>
-          <Box p={2}>
-            <PrimaryButton
-              text="復帰"
-              onClickAction={handlePauseReleseAction}
-            />
-          </Box>
-        </Box>
-      </Fade>
-    </Modal>
-  );
-};
-
-PauseModal.propTypes = {
-  open: PropTypes.bool.isRequired,
-  handlePauseReleseAction: PropTypes.func.isRequired,
-};
-
-const CompleteModal = ({
-  open,
-  hour,
-  minutes,
-  seconds,
-  handleRestartAction,
-}) => {
-  return (
-    <Modal
-      aria-labelledby="transition-modal-title"
-      aria-describedby="transition-modal-description"
-      open={open}
-      closeAfterTransition
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Fade in={open}>
-        <Box
-          p={4}
-          width={400}
-          bgcolor="background.paper"
-          boxShadow={3}
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-        >
-          <h2 id="transition-modal-title">Congratulations！</h2>
-          <p id="transition-modal-description">お疲れさまでしたー</p>
-          <Box p={2} fontSize="1.8rem">
-            {`クリアタイム：${hour}:${minutes}:${seconds}`}
-          </Box>
-          <Box p={2}>
-            <PrimaryButton
-              text="再チャレンジ"
-              onClickAction={handleRestartAction}
-            />
-          </Box>
-        </Box>
-      </Fade>
-    </Modal>
-  );
-};
-
-CompleteModal.propTypes = {
-  open: PropTypes.bool.isRequired,
-  hour: PropTypes.string.isRequired,
-  minutes: PropTypes.string.isRequired,
-  seconds: PropTypes.string.isRequired,
-  handleRestartAction: PropTypes.func.isRequired,
-};
+import PuzzleGuide from './organisms/PuzzleGuide';
+import SelectDifficultyModal from './organisms/SelectDifficultyModal';
+import CompleteModal from './organisms/CompleteModal';
+import PauseModal from './organisms/PauseModal';
 
 const Puzzle = () => {
   const [hour, setHour] = useState('00');
@@ -343,7 +155,7 @@ const Puzzle = () => {
     setShuffledPieceInfo(items);
   };
   const handleDragEnd = (e) => {
-    console.log(e.target);
+    // console.log(e.target);
     const update = {
       duration: 0.5,
       easing: Konva.Easings.ElasticEaseOut,
@@ -379,7 +191,7 @@ const Puzzle = () => {
 
   return (
     <div>
-      <Guide
+      <PuzzleGuide
         matchPieceCount={matchPieceCount}
         pieceTotalCount={pieceXCount * pieceYCount}
         hour={hour}
