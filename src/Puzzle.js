@@ -2,31 +2,14 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Box, Divider, Fade, Modal } from '@material-ui/core';
-import ExtensionIcon from '@material-ui/icons/Extension';
-import TimerIcon from '@material-ui/icons/Timer';
 import Konva from 'konva';
 import { Stage, Layer, Group, Rect, Line, Image } from 'react-konva';
 import useImage from 'use-image';
 import _shuffle from 'lodash/shuffle';
-import Counter from './atoms/Counter';
-import ScoreCounter from './atoms/ScoreCounter';
 import PrimaryButton from './atoms/PrimaryButton';
 import DifficultyButton from './atoms/DifficultyButton';
-
-const TimeCounter = ({ hour, minutes, seconds }) => {
-  return (
-    <Box m={2} fontSize="1.8rem">
-      <TimerIcon style={{ paddingRight: '5px' }} />
-      <Counter hour={hour} minutes={minutes} seconds={seconds} />
-    </Box>
-  );
-};
-
-TimeCounter.propTypes = {
-  hour: PropTypes.string.isRequired,
-  minutes: PropTypes.string.isRequired,
-  seconds: PropTypes.string.isRequired,
-};
+import PieceCounter from './molecules/PieceCounter';
+import TimeCounter from './molecules/TimeCounter';
 
 const Guide = ({
   matchPieceCount,
@@ -38,10 +21,10 @@ const Guide = ({
 }) => {
   return (
     <Box display="flex" justifyContent="center" alignItems="center">
-      <Box m={2} fontSize="1.8rem">
-        <ExtensionIcon style={{ paddingRight: '5px' }} />
-        <ScoreCounter count={matchPieceCount} totalCount={pieceTotalCount} />
-      </Box>
+      <PieceCounter
+        matchPieceCount={matchPieceCount}
+        pieceTotalCount={pieceTotalCount}
+      />
       <TimeCounter hour={hour} minutes={minutes} seconds={seconds} />
       <Box m={2}>
         <PrimaryButton text="一時停止" onClickAction={handlePauseAction} />
