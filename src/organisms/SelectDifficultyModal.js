@@ -4,7 +4,11 @@ import { Box, Fade, Modal } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import DifficultyButton from '../atoms/DifficultyButton';
 
-const SelectDifficultyModal = ({ open, handleSelectDifficultyAction }) => {
+const SelectDifficultyModal = ({
+  open,
+  loading,
+  handleSelectDifficultyAction,
+}) => {
   return (
     <Modal
       aria-labelledby="transition-modal-title"
@@ -31,24 +35,30 @@ const SelectDifficultyModal = ({ open, handleSelectDifficultyAction }) => {
           <p id="transition-modal-description">
             難易度に応じて、ピース数が変わります
           </p>
-          <Box p={2}>
-            <DifficultyButton
-              difficulty="easy"
-              onClickAction={handleSelectDifficultyAction}
-            />
-          </Box>
-          <Box p={2}>
-            <DifficultyButton
-              difficulty="normal"
-              onClickAction={handleSelectDifficultyAction}
-            />
-          </Box>
-          <Box p={2}>
-            <DifficultyButton
-              difficulty="hard"
-              onClickAction={handleSelectDifficultyAction}
-            />
-          </Box>
+          {loading ? (
+            <p>読み込み中...</p>
+          ) : (
+            <>
+              <Box p={2}>
+                <DifficultyButton
+                  difficulty="easy"
+                  onClickAction={handleSelectDifficultyAction}
+                />
+              </Box>
+              <Box p={2}>
+                <DifficultyButton
+                  difficulty="normal"
+                  onClickAction={handleSelectDifficultyAction}
+                />
+              </Box>
+              <Box p={2}>
+                <DifficultyButton
+                  difficulty="hard"
+                  onClickAction={handleSelectDifficultyAction}
+                />
+              </Box>
+            </>
+          )}
           <Box mt={6} fontSize="0.8rem">
             <Link to="/policy">当サービスについて</Link>
           </Box>
@@ -60,6 +70,7 @@ const SelectDifficultyModal = ({ open, handleSelectDifficultyAction }) => {
 
 SelectDifficultyModal.propTypes = {
   open: PropTypes.bool.isRequired,
+  loading: PropTypes.bool.isRequired,
   handleSelectDifficultyAction: PropTypes.func.isRequired,
 };
 
