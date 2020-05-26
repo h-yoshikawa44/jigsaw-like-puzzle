@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Puzzle from './Puzzle';
-import Policy from './Policy';
+import Puzzle from './pages/Puzzle';
+import Policy from './pages/Policy';
 
 const AppRoute = () => {
   return (
