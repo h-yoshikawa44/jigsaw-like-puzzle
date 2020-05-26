@@ -196,18 +196,20 @@ const PuzzleCanvas = ({
 };
 
 PuzzleCanvas.propTypes = {
-  image: PropTypes.element.isRequired,
-  shuffledPieceInfo: PropTypes.exact({
-    id: PropTypes.string.isRequired,
-    crop: PropTypes.exact({
-      x: PropTypes.number.isRequired,
-      y: PropTypes.number.isRequired,
+  image: PropTypes.objectOf(PropTypes.element).isRequired,
+  shuffledPieceInfo: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string.isRequired,
+      crop: PropTypes.exact({
+        x: PropTypes.number.isRequired,
+        y: PropTypes.number.isRequired,
+        width: PropTypes.number.isRequired,
+        height: PropTypes.number.isRequired,
+      }).isRequired,
       width: PropTypes.number.isRequired,
       height: PropTypes.number.isRequired,
-    }).isRequired,
-    width: PropTypes.number.isRequired,
-    height: PropTypes.number.isRequired,
-  }).isRequired,
+    }).isRequired
+  ).isRequired,
   handleDragStart: PropTypes.func.isRequired,
   handleDragEnd: PropTypes.func.isRequired,
 };
