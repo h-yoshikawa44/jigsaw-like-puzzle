@@ -184,8 +184,8 @@ const PuzzleCanvas = ({
                 height={piece.height}
                 x={initialPieceSpaceX}
                 draggable
-                onDragStart={handleDragStart}
-                onDragEnd={handleDragEnd}
+                onDragStart={(e) => handleDragStart(e)}
+                onDragEnd={(e) => handleDragEnd(e)}
               />
             );
           })}

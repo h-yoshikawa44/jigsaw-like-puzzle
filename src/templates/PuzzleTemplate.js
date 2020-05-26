@@ -147,12 +147,12 @@ const PuzzleTemplate = ({ imageUrl }) => {
       scaleY: 1.1,
     });
     const { id } = e.target.attrs;
-    const items = shuffledPieceInfo.slice();
-    const item = items.find((i) => i.id === id);
-    const index = items.indexOf(item);
-    items.splice(index, 1);
-    items.push(item);
-    setShuffledPieceInfo(items);
+    const pieces = shuffledPieceInfo.slice();
+    const piece = pieces.find((i) => i.id === id);
+    const index = pieces.indexOf(piece);
+    pieces.splice(index, 1);
+    pieces.push(piece);
+    setShuffledPieceInfo(pieces);
   };
   const handleDragEnd = (e) => {
     const update = {
