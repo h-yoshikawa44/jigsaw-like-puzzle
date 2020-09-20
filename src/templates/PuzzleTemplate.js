@@ -145,6 +145,9 @@ const PuzzleTemplate = ({ imageUrl }) => {
       },
       scaleX: 1.1,
       scaleY: 1.1,
+      shadowColor: 'gray',
+      shadowBlur: 10,
+      shadowOpacity: 0.6,
     });
     const { id } = e.target.attrs;
     const pieces = shuffledPieceInfo.slice();
@@ -160,8 +163,8 @@ const PuzzleTemplate = ({ imageUrl }) => {
       easing: Konva.Easings.ElasticEaseOut,
       scaleX: 1,
       scaleY: 1,
-      shadowOffsetX: 5,
-      shadowOffsetY: 5,
+      shadowOffsetX: 0,
+      shadowOffsetY: 0,
     };
     if (
       checkNumber(e.target.attrs.x, e.target.attrs.cropX) &&
