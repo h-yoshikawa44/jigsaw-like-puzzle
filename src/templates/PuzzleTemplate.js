@@ -105,6 +105,7 @@ const PuzzleTemplate = ({ imageUrl }) => {
         setPieceSize(60);
         break;
       default:
+        // eslint-disable-next-line no-console
         console.log('error');
     }
     setDifficultyModalOpen(false);
