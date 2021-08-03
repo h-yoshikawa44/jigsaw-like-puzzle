@@ -2,7 +2,7 @@ name: Main Check & Deploy
 on:
   push:
     branches:
-      - environment/**
+      -main
 env:
   project-name: jigsaw-like-puzzle
 
