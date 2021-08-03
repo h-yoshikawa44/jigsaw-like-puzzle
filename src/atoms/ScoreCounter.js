@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ScoreCounter = ({ count, totalCount }) => {
-  return <>{`${count} / ${totalCount}`}</>;
-};
+const ScoreCounter = ({ count, totalCount }) => (
+  <>{`${count} / ${totalCount}`}</>
+);
 
 ScoreCounter.propTypes = {
   count: PropTypes.number.isRequired,

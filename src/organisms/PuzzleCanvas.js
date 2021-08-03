@@ -12,7 +12,7 @@ const PuzzleCanvas = ({
   const imageWidth = 720;
   const imageHeight = 480;
   const padding = 50;
-  /* global window */
+  // eslint-disable-next-line no-undef
   const stageWidth = window.innerWidth;
   const stageHeight = imageHeight + flameWidth * 2 + padding * 2;
   const imageFlameX = stageWidth / 2 - (imageWidth + flameWidth * 2) / 2;
@@ -173,22 +173,20 @@ const PuzzleCanvas = ({
       </Layer>
       <Layer>
         <Group x={imageFlameX + flameWidth} y={padding + flameWidth}>
-          {shuffledPieceInfo.map((piece) => {
-            return (
-              <Image
-                key={piece.id}
-                id={piece.id}
-                image={image}
-                crop={piece.crop}
-                width={piece.width}
-                height={piece.height}
-                x={initialPieceSpaceX}
-                draggable
-                onDragStart={(e) => handleDragStart(e)}
-                onDragEnd={(e) => handleDragEnd(e)}
-              />
-            );
-          })}
+          {shuffledPieceInfo.map((piece) => (
+            <Image
+              key={piece.id}
+              id={piece.id}
+              image={image}
+              crop={piece.crop}
+              width={piece.width}
+              height={piece.height}
+              x={initialPieceSpaceX}
+              draggable
+              onDragStart={(e) => handleDragStart(e)}
+              onDragEnd={(e) => handleDragEnd(e)}
+            />
+          ))}
         </Group>
       </Layer>
     </Stage>

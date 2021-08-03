@@ -1,8 +1,15 @@
 # jigsaw-like-puzzle
 
 ## 環境
-- Node.js：12.18.3
-- React：16.13.1
+base
+- Node.js：14.17.3
+- React：17.0.2
+
+Other major libraries
+- Material UI：
+  - core：4.12.3
+  - icon：4.11.2
+- React Konva：17.0.2-5
 
 ## 開発環境構築
 - .env を作成
@@ -10,15 +17,11 @@
 
 - ライブラリのインストール
 ```
-$ npm install
-or
 $ yarn install
 ```
 
 - ローカルサーバ起動
 ```bash
-$ npm start
-or
 $ yarn start
 ```
 
