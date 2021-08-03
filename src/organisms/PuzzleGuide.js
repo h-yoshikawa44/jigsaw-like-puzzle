@@ -12,20 +12,18 @@ const PuzzleGuide = ({
   minutes,
   seconds,
   handlePauseAction,
-}) => {
-  return (
-    <Box display="flex" justifyContent="center" alignItems="center">
-      <PieceCounter
-        matchPieceCount={matchPieceCount}
-        pieceTotalCount={pieceTotalCount}
-      />
-      <TimeCounter hour={hour} minutes={minutes} seconds={seconds} />
-      <Box m={2}>
-        <PrimaryButton text="一時停止" onClickAction={handlePauseAction} />
-      </Box>
+}) => (
+  <Box display="flex" justifyContent="center" alignItems="center">
+    <PieceCounter
+      matchPieceCount={matchPieceCount}
+      pieceTotalCount={pieceTotalCount}
+    />
+    <TimeCounter hour={hour} minutes={minutes} seconds={seconds} />
+    <Box m={2}>
+      <PrimaryButton text="一時停止" onClickAction={handlePauseAction} />
     </Box>
-  );
-};
+  </Box>
+);
 
 PuzzleGuide.propTypes = {
   matchPieceCount: PropTypes.number.isRequired,
