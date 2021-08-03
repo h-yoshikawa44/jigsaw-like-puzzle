@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Counter = ({ hour, minutes, seconds }) => {
-  return <>{`${hour}:${minutes}:${seconds}`}</>;
-};
+const Counter = ({ hour, minutes, seconds }) => (
+  <>{`${hour}:${minutes}:${seconds}`}</>
+);
 
 Counter.propTypes = {
   hour: PropTypes.string.isRequired,

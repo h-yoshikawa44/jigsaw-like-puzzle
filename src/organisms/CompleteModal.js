@@ -10,43 +10,41 @@ const CompleteModal = ({
   minutes,
   seconds,
   handleRestartAction,
-}) => {
-  return (
-    <Modal
-      aria-labelledby="transition-modal-title"
-      aria-describedby="transition-modal-description"
-      open={open}
-      closeAfterTransition
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Fade in={open}>
-        <Box
-          p={4}
-          width={400}
-          bgcolor="background.paper"
-          boxShadow={3}
-          display="flex"
-          flexDirection="column"
-          alignItems="center"
-        >
-          <h2 id="transition-modal-title">Congratulations！</h2>
-          <p id="transition-modal-description">お疲れさまでしたー</p>
-          <ClearTime hour={hour} minutes={minutes} seconds={seconds} />
-          <Box p={2}>
-            <PrimaryButton
-              text="再チャレンジ"
-              onClickAction={handleRestartAction}
-            />
-          </Box>
+}) => (
+  <Modal
+    aria-labelledby="transition-modal-title"
+    aria-describedby="transition-modal-description"
+    open={open}
+    closeAfterTransition
+    style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
+  >
+    <Fade in={open}>
+      <Box
+        p={4}
+        width={400}
+        bgcolor="background.paper"
+        boxShadow={3}
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+      >
+        <h2 id="transition-modal-title">Congratulations！</h2>
+        <p id="transition-modal-description">お疲れさまでしたー</p>
+        <ClearTime hour={hour} minutes={minutes} seconds={seconds} />
+        <Box p={2}>
+          <PrimaryButton
+            text="再チャレンジ"
+            onClickAction={handleRestartAction}
+          />
         </Box>
-      </Fade>
-    </Modal>
-  );
-};
+      </Box>
+    </Fade>
+  </Modal>
+);
 
 CompleteModal.propTypes = {
   open: PropTypes.bool.isRequired,

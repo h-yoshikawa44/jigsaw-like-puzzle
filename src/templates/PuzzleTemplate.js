@@ -18,15 +18,9 @@ const PuzzleTemplate = ({ imageUrl }) => {
   let time = 0;
   const [backupTime, setBackupTime] = useState(0);
 
-  const parseHours = () => {
-    return `00${parseInt(time / 60 / 60, 10)}`.slice(-2);
-  };
-  const parseMinutes = () => {
-    return `00${parseInt((time / 60) % 60, 10)}`.slice(-2);
-  };
-  const parseSeconds = () => {
-    return `00${parseInt(time % 60, 10)}`.slice(-2);
-  };
+  const parseHours = () => `00${parseInt(time / 60 / 60, 10)}`.slice(-2);
+  const parseMinutes = () => `00${parseInt((time / 60) % 60, 10)}`.slice(-2);
+  const parseSeconds = () => `00${parseInt(time % 60, 10)}`.slice(-2);
   const timeCount = () => {
     if (!time && backupTime) {
       time = backupTime;
