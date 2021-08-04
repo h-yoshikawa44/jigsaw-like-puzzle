@@ -3,11 +3,11 @@ import { Divider } from '@material-ui/core';
 import Konva from 'konva';
 import _shuffle from 'lodash/shuffle';
 import useImage from 'use-image';
-import PuzzleGuide from '../organisms/PuzzleGuide';
-import SelectDifficultyModal from '../organisms/SelectDifficultyModal';
-import CompleteModal from '../organisms/CompleteModal';
-import PauseModal from '../organisms/PauseModal';
-import PuzzleCanvas from '../organisms/PuzzleCanvas';
+import PuzzleGuide from 'components/organisms/PuzzleGuide';
+import SelectDifficultyModal from 'components/organisms/SelectDifficultyModal';
+import CompleteModal from 'components/organisms/CompleteModal';
+import PauseModal from 'components/organisms/PauseModal';
+import PuzzleCanvas from 'components/organisms/PuzzleCanvas';
 
 type Diffculty = 'easy' | 'normal' | 'hard';
 
