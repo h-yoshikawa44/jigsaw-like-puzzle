@@ -1,7 +1,7 @@
 import { VFC } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import Puzzle from './pages/Puzzle';
-import Policy from './pages/Policy';
+import Puzzle from 'pages/Puzzle';
+import Policy from 'containers/pages/Policy';
 
 const AppRoute: VFC = () => (
   <Switch>
