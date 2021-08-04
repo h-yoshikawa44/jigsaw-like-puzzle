@@ -1,7 +1,7 @@
 import { VFC } from 'react';
 import { Box } from '@material-ui/core';
 import TimerIcon from '@material-ui/icons/Timer';
-import Counter from '../atoms/Counter';
+import Counter from 'components/atoms/Counter';
 
 type Props = {
   hour: string;

@@ -1,7 +1,7 @@
 import { VFC } from 'react';
 import { Box } from '@material-ui/core';
 import ExtensionIcon from '@material-ui/icons/Extension';
-import ScoreCounter from '../atoms/ScoreCounter';
+import ScoreCounter from 'components/atoms/ScoreCounter';
 
 type Props = {
   matchPieceCount: number;

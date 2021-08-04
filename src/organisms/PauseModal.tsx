@@ -1,6 +1,6 @@
 import { VFC } from 'react';
 import { Box, Fade, Modal } from '@material-ui/core';
-import PrimaryButton from '../atoms/PrimaryButton';
+import PrimaryButton from 'components/atoms/PrimaryButton';
 
 type Props = {
   open: boolean;

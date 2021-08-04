@@ -1,7 +1,7 @@
 import { VFC } from 'react';
 import { Box, Fade, Modal } from '@material-ui/core';
-import ClearTime from '../molecules/ClearTime';
-import PrimaryButton from '../atoms/PrimaryButton';
+import ClearTime from 'components/molecules/ClearTime';
+import PrimaryButton from 'components/atoms/PrimaryButton';
 
 type Props = {
   open: boolean;
