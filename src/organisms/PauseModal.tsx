@@ -1,9 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { VFC } from 'react';
 import { Box, Fade, Modal } from '@material-ui/core';
 import PrimaryButton from '../atoms/PrimaryButton';
 
-const PauseModal = ({ open, handlePauseReleseAction }) => (
+type Props = {
+  open: boolean;
+  handlePauseReleseAction: VoidFunction;
+};
+
+const PauseModal: VFC<Props> = ({ open, handlePauseReleseAction }) => (
   <Modal
     aria-labelledby="transition-modal-title"
     aria-describedby="transition-modal-description"
@@ -34,10 +38,5 @@ const PauseModal = ({ open, handlePauseReleseAction }) => (
     </Fade>
   </Modal>
 );
-
-PauseModal.propTypes = {
-  open: PropTypes.bool.isRequired,
-  handlePauseReleseAction: PropTypes.func.isRequired,
-};
 
 export default PauseModal;

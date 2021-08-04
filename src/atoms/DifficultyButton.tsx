@@ -1,8 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { VFC } from 'react';
 import { Button } from '@material-ui/core';
 
-const DifficultyButton = ({ difficulty, onClickAction }) => (
+type Diffculty = 'easy' | 'normal' | 'hard';
+
+type Props = {
+  difficulty: Diffculty;
+  onClickAction: (diffculty: Diffculty) => void;
+};
+
+const DifficultyButton: VFC<Props> = ({ difficulty, onClickAction }) => (
   <>
     {difficulty === 'easy' && (
       <Button
@@ -24,10 +30,5 @@ const DifficultyButton = ({ difficulty, onClickAction }) => (
     )}
   </>
 );
-
-DifficultyButton.propTypes = {
-  difficulty: PropTypes.string.isRequired,
-  onClickAction: PropTypes.func.isRequired,
-};
 
 export default DifficultyButton;

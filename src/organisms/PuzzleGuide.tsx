@@ -1,11 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { VFC } from 'react';
 import { Box } from '@material-ui/core';
 import PieceCounter from '../molecules/PieceCounter';
 import TimeCounter from '../molecules/TimeCounter';
 import PrimaryButton from '../atoms/PrimaryButton';
 
-const PuzzleGuide = ({
+type Props = {
+  matchPieceCount: number;
+  pieceTotalCount: number;
+  hour: string;
+  minutes: string;
+  seconds: string;
+  handlePauseAction: VoidFunction;
+};
+
+const PuzzleGuide: VFC<Props> = ({
   matchPieceCount,
   pieceTotalCount,
   hour,
@@ -24,14 +32,5 @@ const PuzzleGuide = ({
     </Box>
   </Box>
 );
-
-PuzzleGuide.propTypes = {
-  matchPieceCount: PropTypes.number.isRequired,
-  pieceTotalCount: PropTypes.number.isRequired,
-  hour: PropTypes.string.isRequired,
-  minutes: PropTypes.string.isRequired,
-  seconds: PropTypes.string.isRequired,
-  handlePauseAction: PropTypes.func.isRequired,
-};
 
 export default PuzzleGuide;

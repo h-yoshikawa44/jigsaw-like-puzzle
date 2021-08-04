@@ -1,10 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { VFC } from 'react';
 import { Box, Fade, Modal } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import DifficultyButton from '../atoms/DifficultyButton';
 
-const SelectDifficultyModal = ({
+type Diffculty = 'easy' | 'normal' | 'hard';
+
+type Props = {
+  open: boolean;
+  loading: boolean;
+  handleSelectDifficultyAction: (diffculty: Diffculty) => void;
+};
+
+const SelectDifficultyModal: VFC<Props> = ({
   open,
   loading,
   handleSelectDifficultyAction,
@@ -65,11 +72,5 @@ const SelectDifficultyModal = ({
     </Fade>
   </Modal>
 );
-
-SelectDifficultyModal.propTypes = {
-  open: PropTypes.bool.isRequired,
-  loading: PropTypes.bool.isRequired,
-  handleSelectDifficultyAction: PropTypes.func.isRequired,
-};
 
 export default SelectDifficultyModal;

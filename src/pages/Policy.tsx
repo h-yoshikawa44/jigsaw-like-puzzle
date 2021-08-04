@@ -1,8 +1,8 @@
-import React from 'react';
+import { VFC } from 'react';
 import { Box, Button, Container, Link, Typography } from '@material-ui/core';
 import { useHistory } from 'react-router-dom';
 
-const Policy = () => {
+const Policy: VFC = () => {
   const history = useHistory();
   return (
     <Container maxWidth="md" style={{ padding: '40px' }}>

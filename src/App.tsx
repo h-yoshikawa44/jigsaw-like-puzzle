@@ -1,16 +1,16 @@
-import React from 'react';
+import { VFC } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Puzzle from './pages/Puzzle';
 import Policy from './pages/Policy';
 
-const AppRoute = () => (
+const AppRoute: VFC = () => (
   <Switch>
     <Route path="/policy" component={Policy} />
     <Route path="/" component={Puzzle} />
   </Switch>
 );
 
-const App = () => (
+const App: VFC = () => (
   <Router>
     <AppRoute />
   </Router>

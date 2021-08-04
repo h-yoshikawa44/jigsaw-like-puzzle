@@ -1,8 +1,27 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { VFC } from 'react';
+import Konva from 'konva';
 import { Group, Image, Layer, Line, Rect, Stage } from 'react-konva';
 
-const PuzzleCanvas = ({
+type Piece = {
+  id: string;
+  crop: {
+    x: number;
+    y: number;
+    width: number;
+    height: number;
+  };
+  width: number;
+  height: number;
+};
+
+type Props = {
+  image: HTMLImageElement | undefined;
+  shuffledPieceInfo: Piece[];
+  handleDragStart: (e: Konva.KonvaEventObject<DragEvent>) => void;
+  handleDragEnd: (e: Konva.KonvaEventObject<DragEvent>) => void;
+};
+
+const PuzzleCanvas: VFC<Props> = ({
   image,
   shuffledPieceInfo,
   handleDragStart,
@@ -191,25 +210,6 @@ const PuzzleCanvas = ({
       </Layer>
     </Stage>
   );
-};
-
-PuzzleCanvas.propTypes = {
-  image: PropTypes.objectOf(PropTypes.element).isRequired,
-  shuffledPieceInfo: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.string.isRequired,
-      crop: PropTypes.exact({
-        x: PropTypes.number.isRequired,
-        y: PropTypes.number.isRequired,
-        width: PropTypes.number.isRequired,
-        height: PropTypes.number.isRequired,
-      }).isRequired,
-      width: PropTypes.number.isRequired,
-      height: PropTypes.number.isRequired,
-    }).isRequired
-  ).isRequired,
-  handleDragStart: PropTypes.func.isRequired,
-  handleDragEnd: PropTypes.func.isRequired,
 };
 
 export default PuzzleCanvas;

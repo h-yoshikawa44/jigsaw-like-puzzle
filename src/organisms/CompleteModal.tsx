@@ -1,10 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { VFC } from 'react';
 import { Box, Fade, Modal } from '@material-ui/core';
 import ClearTime from '../molecules/ClearTime';
 import PrimaryButton from '../atoms/PrimaryButton';
 
-const CompleteModal = ({
+type Props = {
+  open: boolean;
+  hour: string;
+  minutes: string;
+  seconds: string;
+  handleRestartAction: VoidFunction;
+};
+
+const CompleteModal: VFC<Props> = ({
   open,
   hour,
   minutes,
@@ -45,13 +52,5 @@ const CompleteModal = ({
     </Fade>
   </Modal>
 );
-
-CompleteModal.propTypes = {
-  open: PropTypes.bool.isRequired,
-  hour: PropTypes.string.isRequired,
-  minutes: PropTypes.string.isRequired,
-  seconds: PropTypes.string.isRequired,
-  handleRestartAction: PropTypes.func.isRequired,
-};
 
 export default CompleteModal;
