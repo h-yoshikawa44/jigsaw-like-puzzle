@@ -1,4 +1,4 @@
-import { VFC, useState, useRef, useEffect } from 'react';
+import { VFC, useState, useEffect } from 'react';
 import { Divider } from '@material-ui/core';
 import Konva from 'konva';
 import _shuffle from 'lodash/shuffle';
@@ -8,52 +8,16 @@ import SelectDifficultyModal from 'components/organisms/SelectDifficultyModal';
 import CompleteModal from 'components/organisms/CompleteModal';
 import PauseModal from 'components/organisms/PauseModal';
 import PuzzleCanvas from 'components/organisms/PuzzleCanvas';
-
-type Diffculty = 'easy' | 'normal' | 'hard';
-
-type Piece = {
-  id: string;
-  crop: {
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-  };
-  width: number;
-  height: number;
-};
+import useCounter from 'hooks/useCounter';
+import { Diffculty } from 'models/Diffculty';
+import { Piece } from 'models/Piece';
 
 type Props = {
   imageUrl: string;
 };
 
 const PuzzleTemplate: VFC<Props> = ({ imageUrl }) => {
-  const [hour, setHour] = useState('00');
-  const [minutes, setMinutes] = useState('00');
-  const [seconds, setSeconds] = useState('00');
-  const timerId = useRef<NodeJS.Timeout>();
-  let time = 0;
-  const [backupTime, setBackupTime] = useState(0);
-
-  const parseHours = () => `00${Math.floor(time / 60 / 60)}`.slice(-2);
-  const parseMinutes = () => `00${Math.floor(time / 60)}`.slice(-2);
-  const parseSeconds = () => `00${time % 60}`.slice(-2);
-  const timeCount = () => {
-    if (!time && backupTime) {
-      time = backupTime;
-    }
-    time += 1;
-    setHour(parseHours());
-    setMinutes(parseMinutes());
-    setSeconds(parseSeconds());
-    setBackupTime(time);
-  };
-  const timerStart = () => {
-    timerId.current = setInterval(timeCount, 1000);
-  };
-  const timeStop = () => {
-    if (timerId.current) clearInterval(timerId.current);
-  };
+  const { time, countStart, countStop, countReset } = useCounter();
 
   const [difficultyModalOpen, setDifficultyModalOpen] = useState(true);
   const [pauseModalOpen, setPauseModalOpen] = useState(false);
@@ -65,7 +29,7 @@ const PuzzleTemplate: VFC<Props> = ({ imageUrl }) => {
   const [shuffledPieceInfo, setShuffledPieceInfo] = useState<Piece[]>([]);
 
   const handlePauseAction = () => {
-    timeStop();
+    countStop();
     setPauseModalOpen(true);
   };
   useEffect(() => {
@@ -99,10 +63,10 @@ const PuzzleTemplate: VFC<Props> = ({ imageUrl }) => {
       setCompleteModalOpen(true);
     };
     if (matchPieceCount && matchPieceCount === pieceXCount * pieceYCount) {
-      timeStop();
+      countStop();
       setTimeout(complete, 1500);
     }
-  }, [matchPieceCount, pieceXCount, pieceYCount]);
+  }, [matchPieceCount, pieceXCount, pieceYCount, countStop]);
 
   const handleSelectDifficultyAction = (diffculty: Diffculty) => {
     switch (diffculty) {
@@ -126,18 +90,15 @@ const PuzzleTemplate: VFC<Props> = ({ imageUrl }) => {
         console.log('error');
     }
     setDifficultyModalOpen(false);
-    timerStart();
+    countStart();
   };
   const handlePauseReleseAction = () => {
     setPauseModalOpen(false);
-    timerStart();
+    countStart();
   };
   const handleRestartAction = () => {
     setCompleteModalOpen(false);
-    setHour('00');
-    setMinutes('00');
-    setSeconds('00');
-    setBackupTime(0);
+    countReset();
     setPieceXCount(0);
     setPieceYCount(0);
     setMatchPieceCount(0);
@@ -201,9 +162,9 @@ const PuzzleTemplate: VFC<Props> = ({ imageUrl }) => {
       <PuzzleGuide
         matchPieceCount={matchPieceCount}
         pieceTotalCount={pieceXCount * pieceYCount}
-        hour={hour}
-        minutes={minutes}
-        seconds={seconds}
+        hour={time.hour}
+        minutes={time.minutes}
+        seconds={time.seconds}
         handlePauseAction={handlePauseAction}
       />
       <Divider />
@@ -226,9 +187,9 @@ const PuzzleTemplate: VFC<Props> = ({ imageUrl }) => {
       />
       <CompleteModal
         open={completeModalOpen}
-        hour={hour}
-        minutes={minutes}
-        seconds={seconds}
+        hour={time.hour}
+        minutes={time.minutes}
+        seconds={time.seconds}
         handleRestartAction={handleRestartAction}
       />
     </div>

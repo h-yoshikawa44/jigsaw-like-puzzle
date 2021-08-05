@@ -1,18 +1,7 @@
 import { VFC } from 'react';
 import Konva from 'konva';
 import { Group, Image, Layer, Line, Rect, Stage } from 'react-konva';
-
-type Piece = {
-  id: string;
-  crop: {
-    x: number;
-    y: number;
-    width: number;
-    height: number;
-  };
-  width: number;
-  height: number;
-};
+import { Piece } from 'models/Piece';
 
 type Props = {
   image: HTMLImageElement | undefined;

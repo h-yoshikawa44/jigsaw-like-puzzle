@@ -2,8 +2,7 @@ import { VFC } from 'react';
 import { Box, Fade, Modal } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import DifficultyButton from 'components/atoms/DifficultyButton';
-
-type Diffculty = 'easy' | 'normal' | 'hard';
+import { Diffculty } from 'models/Diffculty';
 
 type Props = {
   open: boolean;

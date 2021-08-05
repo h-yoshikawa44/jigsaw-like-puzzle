@@ -1,7 +1,6 @@
 import { VFC } from 'react';
 import { Button } from '@material-ui/core';
-
-type Diffculty = 'easy' | 'normal' | 'hard';
+import { Diffculty } from 'models/Diffculty';
 
 type Props = {
   difficulty: Diffculty;
