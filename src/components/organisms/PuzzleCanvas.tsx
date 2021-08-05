@@ -1,18 +1,25 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { VFC } from 'react';
+import Konva from 'konva';
 import { Group, Image, Layer, Line, Rect, Stage } from 'react-konva';
+import { Piece } from 'models/Piece';
 
-const PuzzleCanvas = ({
+type Props = {
+  image?: HTMLImageElement;
+  pieceData: Piece[];
+  onPieceDragStart: (e: Konva.KonvaEventObject<DragEvent>) => void;
+  onPieceDragEnd: (e: Konva.KonvaEventObject<DragEvent>) => void;
+};
+
+const PuzzleCanvas: VFC<Props> = ({
   image,
-  shuffledPieceInfo,
-  handleDragStart,
-  handleDragEnd,
+  pieceData,
+  onPieceDragStart,
+  onPieceDragEnd,
 }) => {
   const flameWidth = 40;
   const imageWidth = 720;
   const imageHeight = 480;
   const padding = 50;
-  // eslint-disable-next-line no-undef
   const stageWidth = window.innerWidth;
   const stageHeight = imageHeight + flameWidth * 2 + padding * 2;
   const imageFlameX = stageWidth / 2 - (imageWidth + flameWidth * 2) / 2;
@@ -173,7 +180,7 @@ const PuzzleCanvas = ({
       </Layer>
       <Layer>
         <Group x={imageFlameX + flameWidth} y={padding + flameWidth}>
-          {shuffledPieceInfo.map((piece) => (
+          {pieceData.map((piece) => (
             <Image
               key={piece.id}
               id={piece.id}
@@ -183,33 +190,14 @@ const PuzzleCanvas = ({
               height={piece.height}
               x={initialPieceSpaceX}
               draggable
-              onDragStart={(e) => handleDragStart(e)}
-              onDragEnd={(e) => handleDragEnd(e)}
+              onDragStart={(e) => onPieceDragStart(e)}
+              onDragEnd={(e) => onPieceDragEnd(e)}
             />
           ))}
         </Group>
       </Layer>
     </Stage>
   );
-};
-
-PuzzleCanvas.propTypes = {
-  image: PropTypes.objectOf(PropTypes.element).isRequired,
-  shuffledPieceInfo: PropTypes.arrayOf(
-    PropTypes.exact({
-      id: PropTypes.string.isRequired,
-      crop: PropTypes.exact({
-        x: PropTypes.number.isRequired,
-        y: PropTypes.number.isRequired,
-        width: PropTypes.number.isRequired,
-        height: PropTypes.number.isRequired,
-      }).isRequired,
-      width: PropTypes.number.isRequired,
-      height: PropTypes.number.isRequired,
-    }).isRequired
-  ).isRequired,
-  handleDragStart: PropTypes.func.isRequired,
-  handleDragEnd: PropTypes.func.isRequired,
 };
 
 export default PuzzleCanvas;

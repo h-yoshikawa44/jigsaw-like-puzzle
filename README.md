@@ -3,6 +3,7 @@
 ## 環境
 base
 - Node.js：14.17.3
+- TypeScript：4.3.5
 - React：17.0.2
 
 Other major libraries
