@@ -1,5 +1,5 @@
 import React, { VFC } from 'react';
-import { Button } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 
 type Props = {
   text: string;

@@ -1,5 +1,7 @@
 import { VFC } from 'react';
-import { Box, Fade, Modal } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
+import Fade from '@material-ui/core/Fade';
+import Modal from '@material-ui/core/Modal';
 import ClearTime from 'components/molecules/ClearTime';
 import PrimaryButton from 'components/atoms/PrimaryButton';
 

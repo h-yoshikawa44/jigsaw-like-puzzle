@@ -1,5 +1,5 @@
 import { VFC } from 'react';
-import { Box } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
 import TimerIcon from '@material-ui/icons/Timer';
 import Counter from 'components/atoms/Counter';
 
