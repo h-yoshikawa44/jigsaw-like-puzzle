@@ -1,10 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
-
-type Time = {
-  hour: string;
-  minutes: string;
-  seconds: string;
-};
+import { Time } from 'models/Time';
 
 const useCounter = (): {
   time: Time;
