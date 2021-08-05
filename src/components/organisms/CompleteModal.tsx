@@ -1,15 +1,24 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Box, Fade, Modal } from '@material-ui/core';
-import ClearTime from '../molecules/ClearTime';
-import PrimaryButton from '../atoms/PrimaryButton';
+import { VFC } from 'react';
+import Box from '@material-ui/core/Box';
+import Fade from '@material-ui/core/Fade';
+import Modal from '@material-ui/core/Modal';
+import ClearTime from 'components/molecules/ClearTime';
+import PrimaryButton from 'components/atoms/PrimaryButton';
 
-const CompleteModal = ({
+type Props = {
+  open: boolean;
+  hour: string;
+  minutes: string;
+  seconds: string;
+  onRestart: VoidFunction;
+};
+
+const CompleteModal: VFC<Props> = ({
   open,
   hour,
   minutes,
   seconds,
-  handleRestartAction,
+  onRestart,
 }) => (
   <Modal
     aria-labelledby="transition-modal-title"
@@ -36,22 +45,11 @@ const CompleteModal = ({
         <p id="transition-modal-description">お疲れさまでしたー</p>
         <ClearTime hour={hour} minutes={minutes} seconds={seconds} />
         <Box p={2}>
-          <PrimaryButton
-            text="再チャレンジ"
-            onClickAction={handleRestartAction}
-          />
+          <PrimaryButton text="再チャレンジ" onClick={onRestart} />
         </Box>
       </Box>
     </Fade>
   </Modal>
 );
-
-CompleteModal.propTypes = {
-  open: PropTypes.bool.isRequired,
-  hour: PropTypes.string.isRequired,
-  minutes: PropTypes.string.isRequired,
-  seconds: PropTypes.string.isRequired,
-  handleRestartAction: PropTypes.func.isRequired,
-};
 
 export default CompleteModal;

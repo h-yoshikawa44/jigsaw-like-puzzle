@@ -1,13 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Box, Fade, Modal } from '@material-ui/core';
+import { VFC } from 'react';
 import { Link } from 'react-router-dom';
-import DifficultyButton from '../atoms/DifficultyButton';
+import Box from '@material-ui/core/Box';
+import Fade from '@material-ui/core/Fade';
+import Modal from '@material-ui/core/Modal';
+import DifficultyButton from 'components/atoms/DifficultyButton';
+import { Diffculty } from 'models/Diffculty';
 
-const SelectDifficultyModal = ({
+type Props = {
+  open: boolean;
+  loading: boolean;
+  onSelectDifficulty: (diffculty: Diffculty) => void;
+};
+
+const SelectDifficultyModal: VFC<Props> = ({
   open,
   loading,
-  handleSelectDifficultyAction,
+  onSelectDifficulty,
 }) => (
   <Modal
     aria-labelledby="transition-modal-title"
@@ -41,19 +49,19 @@ const SelectDifficultyModal = ({
             <Box p={2}>
               <DifficultyButton
                 difficulty="easy"
-                onClickAction={handleSelectDifficultyAction}
+                onClick={onSelectDifficulty}
               />
             </Box>
             <Box p={2}>
               <DifficultyButton
                 difficulty="normal"
-                onClickAction={handleSelectDifficultyAction}
+                onClick={onSelectDifficulty}
               />
             </Box>
             <Box p={2}>
               <DifficultyButton
                 difficulty="hard"
-                onClickAction={handleSelectDifficultyAction}
+                onClick={onSelectDifficulty}
               />
             </Box>
           </>
@@ -65,11 +73,5 @@ const SelectDifficultyModal = ({
     </Fade>
   </Modal>
 );
-
-SelectDifficultyModal.propTypes = {
-  open: PropTypes.bool.isRequired,
-  loading: PropTypes.bool.isRequired,
-  handleSelectDifficultyAction: PropTypes.func.isRequired,
-};
 
 export default SelectDifficultyModal;

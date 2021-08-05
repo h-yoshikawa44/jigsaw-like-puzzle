@@ -36,8 +36,8 @@ jobs:
       - name: Package Install
         run: yarn install
 
-      # - name: Lint
-      #   run: yarn lint-check
+      - name: Lint & Format Check
+        run: yarn lint-check
 
       - name: Slack Notification by NonSuccess
         uses: 8398a7/action-slack@v3
