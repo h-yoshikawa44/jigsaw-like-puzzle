@@ -4,16 +4,16 @@ import { Diffculty } from 'models/Diffculty';
 
 type Props = {
   difficulty: Diffculty;
-  onClickAction: (diffculty: Diffculty) => void;
+  onClick: (diffculty: Diffculty) => void;
 };
 
-const DifficultyButton: VFC<Props> = ({ difficulty, onClickAction }) => (
+const DifficultyButton: VFC<Props> = ({ difficulty, onClick }) => (
   <>
     {difficulty === 'easy' && (
       <Button
         variant="contained"
         style={{ color: 'white', backgroundColor: 'green' }}
-        onClick={() => onClickAction(difficulty)}
+        onClick={() => onClick(difficulty)}
       >
         初級（24ピース）
       </Button>
@@ -22,7 +22,7 @@ const DifficultyButton: VFC<Props> = ({ difficulty, onClickAction }) => (
       <Button
         variant="contained"
         color={difficulty === 'normal' ? 'primary' : 'secondary'}
-        onClick={() => onClickAction(difficulty)}
+        onClick={() => onClick(difficulty)}
       >
         {difficulty === 'normal' ? '中級（54ピース）' : '上級（96ピース）'}
       </Button>

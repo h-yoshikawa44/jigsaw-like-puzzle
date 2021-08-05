@@ -3,11 +3,11 @@ import { Button } from '@material-ui/core';
 
 type Props = {
   text: string;
-  onClickAction: React.MouseEventHandler<HTMLButtonElement>;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const PrimaryButton: VFC<Props> = ({ text, onClickAction }) => (
-  <Button onClick={onClickAction} variant="contained" color="primary">
+const PrimaryButton: VFC<Props> = ({ text, onClick }) => (
+  <Button variant="contained" color="primary" onClick={onClick}>
     {text}
   </Button>
 );

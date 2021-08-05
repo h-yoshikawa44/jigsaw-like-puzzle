@@ -7,13 +7,13 @@ import { Diffculty } from 'models/Diffculty';
 type Props = {
   open: boolean;
   loading: boolean;
-  handleSelectDifficultyAction: (diffculty: Diffculty) => void;
+  onSelectDifficulty: (diffculty: Diffculty) => void;
 };
 
 const SelectDifficultyModal: VFC<Props> = ({
   open,
   loading,
-  handleSelectDifficultyAction,
+  onSelectDifficulty,
 }) => (
   <Modal
     aria-labelledby="transition-modal-title"
@@ -47,19 +47,19 @@ const SelectDifficultyModal: VFC<Props> = ({
             <Box p={2}>
               <DifficultyButton
                 difficulty="easy"
-                onClickAction={handleSelectDifficultyAction}
+                onClick={onSelectDifficulty}
               />
             </Box>
             <Box p={2}>
               <DifficultyButton
                 difficulty="normal"
-                onClickAction={handleSelectDifficultyAction}
+                onClick={onSelectDifficulty}
               />
             </Box>
             <Box p={2}>
               <DifficultyButton
                 difficulty="hard"
-                onClickAction={handleSelectDifficultyAction}
+                onClick={onSelectDifficulty}
               />
             </Box>
           </>

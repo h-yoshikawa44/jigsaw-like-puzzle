@@ -52,29 +52,29 @@ const Puzzle: VFC<Props> = ({
       hour={time.hour}
       minutes={time.minutes}
       seconds={time.seconds}
-      handlePauseAction={onPause}
+      onPause={onPause}
     />
     <Divider />
     {loadingStatus === 'loaded' && (
       <PuzzleCanvas
         image={image}
-        shuffledPieceInfo={pieceData}
-        handleDragStart={onPieceDragStart}
-        handleDragEnd={onPieceDragEnd}
+        pieceData={pieceData}
+        onPieceDragStart={onPieceDragStart}
+        onPieceDragEnd={onPieceDragEnd}
       />
     )}
     <SelectDifficultyModal
       open={difficultyModalOpen}
       loading={loadingStatus === 'loading'}
-      handleSelectDifficultyAction={onSelectDifficulty}
+      onSelectDifficulty={onSelectDifficulty}
     />
-    <PauseModal open={pauseModalOpen} handlePauseReleseAction={onPauseRelese} />
+    <PauseModal open={pauseModalOpen} onPauseRelese={onPauseRelese} />
     <CompleteModal
       open={completeModalOpen}
       hour={time.hour}
       minutes={time.minutes}
       seconds={time.seconds}
-      handleRestartAction={onRestart}
+      onRestart={onRestart}
     />
   </div>
 );

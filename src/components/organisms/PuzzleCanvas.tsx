@@ -4,23 +4,22 @@ import { Group, Image, Layer, Line, Rect, Stage } from 'react-konva';
 import { Piece } from 'models/Piece';
 
 type Props = {
-  image: HTMLImageElement | undefined;
-  shuffledPieceInfo: Piece[];
-  handleDragStart: (e: Konva.KonvaEventObject<DragEvent>) => void;
-  handleDragEnd: (e: Konva.KonvaEventObject<DragEvent>) => void;
+  image?: HTMLImageElement;
+  pieceData: Piece[];
+  onPieceDragStart: (e: Konva.KonvaEventObject<DragEvent>) => void;
+  onPieceDragEnd: (e: Konva.KonvaEventObject<DragEvent>) => void;
 };
 
 const PuzzleCanvas: VFC<Props> = ({
   image,
-  shuffledPieceInfo,
-  handleDragStart,
-  handleDragEnd,
+  pieceData,
+  onPieceDragStart,
+  onPieceDragEnd,
 }) => {
   const flameWidth = 40;
   const imageWidth = 720;
   const imageHeight = 480;
   const padding = 50;
-  // eslint-disable-next-line no-undef
   const stageWidth = window.innerWidth;
   const stageHeight = imageHeight + flameWidth * 2 + padding * 2;
   const imageFlameX = stageWidth / 2 - (imageWidth + flameWidth * 2) / 2;
@@ -181,7 +180,7 @@ const PuzzleCanvas: VFC<Props> = ({
       </Layer>
       <Layer>
         <Group x={imageFlameX + flameWidth} y={padding + flameWidth}>
-          {shuffledPieceInfo.map((piece) => (
+          {pieceData.map((piece) => (
             <Image
               key={piece.id}
               id={piece.id}
@@ -191,8 +190,8 @@ const PuzzleCanvas: VFC<Props> = ({
               height={piece.height}
               x={initialPieceSpaceX}
               draggable
-              onDragStart={(e) => handleDragStart(e)}
-              onDragEnd={(e) => handleDragEnd(e)}
+              onDragStart={(e) => onPieceDragStart(e)}
+              onDragEnd={(e) => onPieceDragEnd(e)}
             />
           ))}
         </Group>

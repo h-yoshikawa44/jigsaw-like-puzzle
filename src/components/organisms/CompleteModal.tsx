@@ -8,7 +8,7 @@ type Props = {
   hour: string;
   minutes: string;
   seconds: string;
-  handleRestartAction: VoidFunction;
+  onRestart: VoidFunction;
 };
 
 const CompleteModal: VFC<Props> = ({
@@ -16,7 +16,7 @@ const CompleteModal: VFC<Props> = ({
   hour,
   minutes,
   seconds,
-  handleRestartAction,
+  onRestart,
 }) => (
   <Modal
     aria-labelledby="transition-modal-title"
@@ -43,10 +43,7 @@ const CompleteModal: VFC<Props> = ({
         <p id="transition-modal-description">お疲れさまでしたー</p>
         <ClearTime hour={hour} minutes={minutes} seconds={seconds} />
         <Box p={2}>
-          <PrimaryButton
-            text="再チャレンジ"
-            onClickAction={handleRestartAction}
-          />
+          <PrimaryButton text="再チャレンジ" onClick={onRestart} />
         </Box>
       </Box>
     </Fade>

@@ -4,10 +4,10 @@ import PrimaryButton from 'components/atoms/PrimaryButton';
 
 type Props = {
   open: boolean;
-  handlePauseReleseAction: VoidFunction;
+  onPauseRelese: VoidFunction;
 };
 
-const PauseModal: VFC<Props> = ({ open, handlePauseReleseAction }) => (
+const PauseModal: VFC<Props> = ({ open, onPauseRelese }) => (
   <Modal
     aria-labelledby="transition-modal-title"
     aria-describedby="transition-modal-description"
@@ -32,7 +32,7 @@ const PauseModal: VFC<Props> = ({ open, handlePauseReleseAction }) => (
         <h2 id="transition-modal-title">一時停止中</h2>
         <p id="transition-modal-description">疲れたときは小休憩</p>
         <Box p={2}>
-          <PrimaryButton text="復帰" onClickAction={handlePauseReleseAction} />
+          <PrimaryButton text="復帰" onClick={onPauseRelese} />
         </Box>
       </Box>
     </Fade>

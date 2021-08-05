@@ -10,7 +10,7 @@ type Props = {
   hour: string;
   minutes: string;
   seconds: string;
-  handlePauseAction: VoidFunction;
+  onPause: VoidFunction;
 };
 
 const PuzzleGuide: VFC<Props> = ({
@@ -19,7 +19,7 @@ const PuzzleGuide: VFC<Props> = ({
   hour,
   minutes,
   seconds,
-  handlePauseAction,
+  onPause,
 }) => (
   <Box display="flex" justifyContent="center" alignItems="center">
     <PieceCounter
@@ -28,7 +28,7 @@ const PuzzleGuide: VFC<Props> = ({
     />
     <TimeCounter hour={hour} minutes={minutes} seconds={seconds} />
     <Box m={2}>
-      <PrimaryButton text="一時停止" onClickAction={handlePauseAction} />
+      <PrimaryButton text="一時停止" onClick={onPause} />
     </Box>
   </Box>
 );
