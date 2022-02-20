@@ -3,13 +3,13 @@
 ## 環境
 base
 - Node.js：14.17.3
-- TypeScript：4.3.5
+- TypeScript：4.5.5
 - React：17.0.2
 
 Other major libraries
 - Material UI：
-  - core：4.12.3
-  - icon：4.11.2
+  - core：5.4.2
+  - icon：5.4.2
 - React Konva：17.0.2-5
 
 ## 開発環境構築

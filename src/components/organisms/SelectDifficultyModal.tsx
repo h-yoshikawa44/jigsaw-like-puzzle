@@ -1,8 +1,8 @@
 import { VFC } from 'react';
 import { Link } from 'react-router-dom';
-import Box from '@material-ui/core/Box';
-import Fade from '@material-ui/core/Fade';
-import Modal from '@material-ui/core/Modal';
+import Box from '@mui/material/Box';
+import Fade from '@mui/material/Fade';
+import Modal from '@mui/material/Modal';
 import DifficultyButton from 'components/atoms/DifficultyButton';
 import { Diffculty } from 'models/Diffculty';
 
