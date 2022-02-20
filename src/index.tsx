@@ -2,12 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import firebase from './libs/Firebase';
 import reportWebVitals from './reportWebVitals';
-
-if (process.env.NODE_ENV === 'production') {
-  firebase.analytics();
-}
+import './lib/firebase';
 
 ReactDOM.render(
   <React.StrictMode>

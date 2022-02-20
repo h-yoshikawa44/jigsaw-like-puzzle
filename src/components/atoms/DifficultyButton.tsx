@@ -1,5 +1,5 @@
 import { VFC } from 'react';
-import Button from '@material-ui/core/Button';
+import Button from '@mui/material/Button';
 import { Diffculty } from 'models/Diffculty';
 
 type Props = {
@@ -21,7 +21,7 @@ const DifficultyButton: VFC<Props> = ({ difficulty, onClick }) => (
     {(difficulty === 'normal' || difficulty === 'hard') && (
       <Button
         variant="contained"
-        color={difficulty === 'normal' ? 'primary' : 'secondary'}
+        color={difficulty === 'normal' ? 'primary' : 'error'}
         onClick={() => onClick(difficulty)}
       >
         {difficulty === 'normal' ? '中級（54ピース）' : '上級（96ピース）'}

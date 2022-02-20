@@ -1,5 +1,5 @@
 import { VFC } from 'react';
-import Divider from '@material-ui/core/Divider';
+import Divider from '@mui/material/Divider';
 import Konva from 'konva';
 import PuzzleGuide from 'components/organisms/PuzzleGuide';
 import SelectDifficultyModal from 'components/organisms/SelectDifficultyModal';
