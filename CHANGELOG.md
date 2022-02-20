@@ -1,11 +1,29 @@
 # CHANGELOG
 
+## v1.1.0（2022/02/20）
+### Updated
+- 各種ライブラリのアプデ(#66)
+  - typescript：4.3.5 → 4.5.5
+  - react-script：4.0.3 → 5.0.0
+  - prop-types：15.7.2 → 15.8.1
+  - react-router-dom：5.2.0 → 5.3.0
+  - Material UI：
+    - core：4.9.14 → 5.4.2
+    - icon：4.9.1 → 5.4.2
+  - Firebase SDK：8.8.1 → 9.6.7
+  - konva：8.1.1 → 8.3.2
+  - use-image：1.0.5 → 1.0.8
+  - web-vitals：1.0.1 → 2.1.4
+
+### Development Added
+- Pre Commit 設定追加(#66)
+
 ## v1.0.0（2021/08/05）
 ### Fixed
 - アプリ全体の TypeScript 化(#55)
 - リファクタリング（ロジック部分をカスタムフック切り出し）(#55)
 
-### Other
+### Development Added
 - 開発ブランチ用のワークフロー作成(#55)
 
 ## v0.2.0（2021/08/03）
@@ -18,7 +36,7 @@
     - core 4.9.14 → 4.12.3
     - icon 4.9.1 → 4.11.2
 
-### Other
+### Development Changed
 - デプロイ自動化(#21)
 
 ## v0.1.5（2020/09/20）
@@ -28,11 +46,11 @@
 ### Updated
 - ライブラリの脆弱性対応
 
-### Other
+### Development Removed
 - Docker 環境の除去
 
 ## v0.1.4（2020/05/28）
-## Other
+## Development Fixed
 - Google Analytics がちゃんと動いてない不具合対応(#17)
   - Firebase SDK を予約済み URL でなく、ライブラリから使用するよう変更
   - firebase.analytics() を追加
@@ -50,7 +68,7 @@
 - リファクタリング（コンポーネント・ファイル分割）(#19)
 
 ## v0.1.1（2020/05/25）
-### Other
+### Development Fixed
 - Firebase SDK の読み込み場所の修正(#17)
 
 ## v0.1.0（2020/05/23）
@@ -66,7 +84,7 @@
 ### Changed
 - ドラッグ中のピースが必ず前面に来るように対応(#12)
 
-### Other
+### Development Added
 - Firebase との連携(#10)
   - Firebase Hosting
 
