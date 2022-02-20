@@ -1,6 +1,6 @@
 import { VFC } from 'react';
-import Box from '@material-ui/core/Box';
-import ExtensionIcon from '@material-ui/icons/Extension';
+import Box from '@mui/material/Box';
+import ExtensionIcon from '@mui/icons-material/Extension';
 import ScoreCounter from 'components/atoms/ScoreCounter';
 
 type Props = {
