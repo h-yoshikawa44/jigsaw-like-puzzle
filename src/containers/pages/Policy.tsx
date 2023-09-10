@@ -1,8 +1,8 @@
-import { VFC, useCallback } from 'react';
+import { FC, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import Policy from 'components/pages/Policy';
 
-const EnhancedPolicy: VFC = () => {
+const EnhancedPolicy: FC = () => {
   const history = useHistory();
 
   const handleBackTop = useCallback(() => {

@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
@@ -9,7 +9,7 @@ type Props = {
   handleBackTop: VoidFunction;
 };
 
-const Policy: VFC<Props> = ({ handleBackTop }) => (
+const Policy: FC<Props> = ({ handleBackTop }) => (
   <Container maxWidth="md" style={{ padding: '40px' }}>
     <Typography variant="h4" component="h2">
       当サービス（ Jigsaw Like Puzzle について）

@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import Box from '@mui/material/Box';
 import PieceCounter from 'components/molecules/PieceCounter';
 import TimeCounter from 'components/molecules/TimeCounter';
@@ -13,7 +13,7 @@ type Props = {
   onPause: VoidFunction;
 };
 
-const PuzzleGuide: VFC<Props> = ({
+const PuzzleGuide: FC<Props> = ({
   matchPieceCount,
   pieceTotalCount,
   hour,

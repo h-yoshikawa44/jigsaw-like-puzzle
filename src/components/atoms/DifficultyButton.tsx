@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import Button from '@mui/material/Button';
 import { Diffculty } from 'models/Diffculty';
 
@@ -7,7 +7,7 @@ type Props = {
   onClick: (diffculty: Diffculty) => void;
 };
 
-const DifficultyButton: VFC<Props> = ({ difficulty, onClick }) => (
+const DifficultyButton: FC<Props> = ({ difficulty, onClick }) => (
   <>
     {difficulty === 'easy' && (
       <Button

@@ -1,11 +1,11 @@
-import { VFC, useState, useEffect } from 'react';
+import { FC, useState, useEffect } from 'react';
 import useImage from 'use-image';
 import Puzzle from 'components/pages/Puzzle';
 import { Diffculty } from 'models/Diffculty';
 import useCounter from 'hooks/useCounter';
 import usePuzzle from 'hooks/usePuzzle';
 
-const EnhancedPuzzle: VFC = () => {
+const EnhancedPuzzle: FC = () => {
   const imageUrl = `${process.env.PUBLIC_URL}/photo0000_6339.png`;
   const [image, status] = useImage(imageUrl);
 

@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import Divider from '@mui/material/Divider';
 import Konva from 'konva';
 import PuzzleGuide from 'components/organisms/PuzzleGuide';
@@ -28,7 +28,7 @@ type Props = {
   onPieceDragEnd: (e: Konva.KonvaEventObject<DragEvent>) => void;
 };
 
-const Puzzle: VFC<Props> = ({
+const Puzzle: FC<Props> = ({
   image,
   loadingStatus,
   pieceData,

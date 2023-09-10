@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
@@ -13,7 +13,7 @@ type Props = {
   onRestart: VoidFunction;
 };
 
-const CompleteModal: VFC<Props> = ({
+const CompleteModal: FC<Props> = ({
   open,
   hour,
   minutes,

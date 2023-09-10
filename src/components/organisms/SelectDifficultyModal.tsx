@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
@@ -12,7 +12,7 @@ type Props = {
   onSelectDifficulty: (diffculty: Diffculty) => void;
 };
 
-const SelectDifficultyModal: VFC<Props> = ({
+const SelectDifficultyModal: FC<Props> = ({
   open,
   loading,
   onSelectDifficulty,
