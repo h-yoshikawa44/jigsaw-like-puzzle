@@ -48,7 +48,9 @@
     "web-vitals": "^2.1.4"
   },
   "devDependencies": {
+    "@types/eslint-config-prettier": "^6.11.0",
     "@types/jest": "^26.0.24",
+    "@types/lint-staged": "^13.2.0",
     "@types/node": "^18.17.15",
     "@types/prettier": "^2.3.2",
     "@types/react": "^18.2.21",
