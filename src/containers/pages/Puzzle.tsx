@@ -4,10 +4,10 @@ import Puzzle from 'components/pages/Puzzle';
 import { Diffculty } from 'models/Diffculty';
 import useCounter from 'hooks/useCounter';
 import usePuzzle from 'hooks/usePuzzle';
+import puzzleImg from './assets/photo0000_6339.png';
 
 const EnhancedPuzzle: FC = () => {
-  const imageUrl = `${process.env.PUBLIC_URL}/photo0000_6339.png`;
-  const [image, status] = useImage(imageUrl);
+  const [image, status] = useImage(puzzleImg);
 
   const { time, countStart, countStop, countReset } = useCounter();
   const {
