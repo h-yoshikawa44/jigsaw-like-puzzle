@@ -3,8 +3,9 @@
   "version": "1.1.0",
   "private": true,
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "vite",
+    "build": "tsc --noEmit && vite build",
+    "serve": "vite preview",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint-check": "npm run lint:eslint && npm run check:prettier",
@@ -57,13 +58,15 @@
     "@types/react-dom": "^18.2.7",
     "@types/testing-library__jest-dom": "^5.14.1",
     "@types/testing-library__user-event": "^4.2.0",
+    "@vitejs/plugin-react": "^4.0.4",
     "eslint-config-prettier": "^8.3.0",
     "lint-staged": "^14.0.1",
     "postcss-normalize": "^10.0.1",
     "prettier": "^2.0.5",
     "simple-git-hooks": "^2.9.0",
     "typescript": "^4.9.5",
-    "typesync": "^0.11.1"
+    "typesync": "^0.11.1",
+    "vite": "^4.4.9"
   },
   "volta": {
     "node": "18.17.1",
