@@ -7,12 +7,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint-check": "yarn lint:eslint && yarn check:prettier",
-    "lint:eslint": "yarn run -s eslint \"./src/**/*.{js,jsx,ts,tsx}\"",
-    "check:prettier": "yarn run -s prettier --check \"./{public,src}/**/*.{js,jsx,ts,tsx,html,gql,graphql,json}\"",
-    "fix": "yarn fix:eslint && yarn fix:prettier",
-    "fix:eslint": "yarn lint:eslint --fix",
-    "fix:prettier": "yarn check:prettier --write",
+    "lint-check": "npm run lint:eslint && npm run check:prettier",
+    "lint:eslint": "eslint \"./src/**/*.{js,jsx,ts,tsx}\"",
+    "check:prettier": "prettier --check \"./{public,src}/**/*.{js,jsx,ts,tsx,html,gql,graphql,json}\"",
+    "fix": "npm run fix:eslint && npm run fix:prettier",
+    "fix:eslint": "npm run lint:eslint --fix",
+    "fix:prettier": "npm run check:prettier --write",
     "preinstall": "typesync || echo 'skip typesync'",
     "prepare": "simple-git-hooks || echo 'Can not set git hooks'"
   },
@@ -70,10 +70,10 @@
   },
   "volta": {
     "node": "14.17.3",
-    "yarn": "1.22.17"
+    "npm": "8.6.0"
   },
   "simple-git-hooks": {
-    "pre-commit": "yarn run -s lint-staged"
+    "pre-commit": "npx lint-staged"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [

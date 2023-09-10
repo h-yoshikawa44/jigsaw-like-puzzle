@@ -21,6 +21,5 @@
   },
   "[typescriptreact]": {
     "editor.formatOnSave": true
-  },
-  "eslint.packageManager": "yarn",
+  }
 }

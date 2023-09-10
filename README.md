@@ -17,13 +17,13 @@ Other major libraries
   ※内容は別途管理
 
 - ライブラリのインストール
-```
-$ yarn install
+```bash
+$ npm install
 ```
 
 - ローカルサーバ起動
 ```bash
-$ yarn start
+$ npm run start
 ```
 
 - ブラウザにアクセス

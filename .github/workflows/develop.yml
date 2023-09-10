@@ -35,7 +35,7 @@ jobs:
             ${{ runner.os }}-${{ env.project-name }}-
 
       - name: Package Install
-        run: yarn install
+        run: npm install
 
       - name: Lint & Format Check
-        run: yarn lint-check
+        run: npm run lint-check
