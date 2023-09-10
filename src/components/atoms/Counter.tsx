@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 
 type Props = {
   hour: string;
@@ -6,7 +6,7 @@ type Props = {
   seconds: string;
 };
 
-const Counter: VFC<Props> = ({ hour, minutes, seconds }) => (
+const Counter: FC<Props> = ({ hour, minutes, seconds }) => (
   <>{`${hour}:${minutes}:${seconds}`}</>
 );
 

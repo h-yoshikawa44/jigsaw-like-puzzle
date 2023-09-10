@@ -5,8 +5,6 @@ module.exports = {
   },
   extends: [
     'plugin:react/recommended',
-    'airbnb',
-    'airbnb/hooks',
     'plugin:@typescript-eslint/recommended',
     'prettier',
   ],
@@ -20,12 +18,6 @@ module.exports = {
   },
   plugins: ['@typescript-eslint', 'import', 'jsx-a11y', 'react', 'react-hooks'],
   rules: {
-    'react/jsx-filename-extension': [
-      'error',
-      {
-        extensions: ['.jsx', '.tsx'],
-      },
-    ],
     'no-use-before-define': 'off',
     'import/extensions': [
       'error',
@@ -39,14 +31,6 @@ module.exports = {
     ],
     'react/react-in-jsx-scope': 'off',
   },
-  overrides: [
-    {
-      files: ['*.tsx'],
-      rules: {
-        'react/prop-types': 'off',
-      },
-    },
-  ],
   settings: {
     'import/resolver': {
       node: {

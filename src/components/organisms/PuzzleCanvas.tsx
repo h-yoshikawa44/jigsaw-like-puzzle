@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import Konva from 'konva';
 import { Group, Image, Layer, Line, Rect, Stage } from 'react-konva';
 import { Piece } from 'models/Piece';
@@ -10,7 +10,7 @@ type Props = {
   onPieceDragEnd: (e: Konva.KonvaEventObject<DragEvent>) => void;
 };
 
-const PuzzleCanvas: VFC<Props> = ({
+const PuzzleCanvas: FC<Props> = ({
   image,
   pieceData,
   onPieceDragStart,
