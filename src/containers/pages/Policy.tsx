@@ -1,12 +1,12 @@
 import { FC, useCallback } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Policy from 'components/pages/Policy';
 
 const EnhancedPolicy: FC = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const handleBackTop = useCallback(() => {
-    history.push('/');
+    navigate('/');
   }, [history]);
 
   return <Policy handleBackTop={handleBackTop} />;

@@ -1,19 +1,19 @@
 import { FC } from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Puzzle from 'containers/pages/Puzzle';
 import Policy from 'containers/pages/Policy';
 
 const AppRoute: FC = () => (
-  <Switch>
-    <Route path="/policy" component={Policy} />
-    <Route path="/" component={Puzzle} />
-  </Switch>
+  <Routes>
+    <Route path="/policy" element={<Policy />} />
+    <Route path="/" element={<Puzzle />} />
+  </Routes>
 );
 
 const App: FC = () => (
-  <Router>
+  <BrowserRouter>
     <AppRoute />
-  </Router>
+  </BrowserRouter>
 );
 
 export default App;
