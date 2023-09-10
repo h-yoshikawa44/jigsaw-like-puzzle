@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import Konva from 'konva';
-import _shuffle from 'lodash/shuffle';
+import shuffle from 'just-shuffle';
 import { EASY, NORMAL, HARD } from 'constants/puzzle';
 import { Diffculty } from 'models/Diffculty';
 import { Piece } from 'models/Piece';
@@ -47,7 +47,7 @@ const usePuzzle = (): {
           });
         }
       }
-      setPieceData(_shuffle(pieceInfo));
+      setPieceData(shuffle(pieceInfo));
     };
     if (pieceCount.x && pieceCount.y && pieceSize) {
       initialPiece();
