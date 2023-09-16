@@ -94,7 +94,7 @@ const usePuzzle = (): {
       }
       return true;
     },
-    []
+    [],
   );
 
   const handlePieceDragStart = useCallback(
@@ -125,7 +125,7 @@ const usePuzzle = (): {
       }
       setPieceData(pieces);
     },
-    [pieceData]
+    [pieceData],
   );
 
   const handlePieceDragEnd = useCallback(
@@ -152,7 +152,7 @@ const usePuzzle = (): {
       }
       e.target.to(update);
     },
-    [checkPiecePosition]
+    [checkPiecePosition],
   );
 
   const pieceCountReset = useCallback(() => {
