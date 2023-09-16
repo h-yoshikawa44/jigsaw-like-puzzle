@@ -1,18 +1,16 @@
 ---
 name: リリースチケット
-about: リリース
+about: リリース発行に関するものはこちら
 title: "[リリース]vX.X.X"
 ---
 
-## 対象環境
-本番
-
 ## リリース内容
-- ※リリース機能の概要
+<!-- Issue 番号をリストで一覧 -->
 
 ## 作業内容
-- [ ] package.json のバージョン更新
+- [ ] package.json のバージョン更新（lock ファイル反映）
 - [ ] CHANGELOG 更新
-- [ ] developをmasterにマージ
-- [ ] masterをもとにリリースタグ付け
+- [ ] develop を main にマージ
+- [ ] main をもとにタグ付け
+- [ ] リリース作成
 - [ ] 動作確認

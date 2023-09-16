@@ -1,96 +1,45 @@
 name: Main Check & Deploy
+
 on:
   push:
     branches:
       - main
-env:
-  project-name: jigsaw-like-puzzle
 
 jobs:
   check:
-    name: Lint
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Setup Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14.17.3
-
-      - name: Get Yarn Cache Directory Path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: Cache Node Modules
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-${{ env.project-name }}-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
-          restore-keys: |
-            ${{ runner.os }}-${{ env.project-name }}-
-
-      - name: Package Install
-        run: yarn install
-
-      - name: Lint & Format Check
-        run: yarn lint-check
-
-      - name: Slack Notification by NonSuccess
-        uses: 8398a7/action-slack@v3
-        if: success() != true
-        with:
-          status: ${{ job.status }}
-          fields: repo,message,commit,author,action,eventName,ref,workflow
-          author_name: 'check'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    uses: ./.github/workflows/develop.yml
 
   deploy:
     name: Build & Deploy
     needs: check
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     timeout-minutes: 5
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
-          node-version: 14.17.3
+          node-version-file: '.node-version'
+          cache: npm
+          cache-dependency-path: './package-lock.json'
 
-      - name: Get Yarn Cache Directory Path
-        id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-
-      - name: Cache Node Modules
-        uses: actions/cache@v2
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: ${{ runner.os }}-${{ env.project-name }}-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
-          restore-keys: |
-            ${{ runner.os }}-${{ env.project-name }}-
-
-      - name: Package Install
-        run: yarn install
+      - name: Package Clean Install
+        run: npm ci
 
       - name: Build
         env:
-          REACT_APP_APP_KEY: ${{ secrets.REACT_APP_APP_KEY }}
-          REACT_APP_AUTH_DOMAIN: ${{ secrets.REACT_APP_AUTH_DOMAIN }}
-          REACT_APP_DATABASE_URL: ${{ secrets.REACT_APP_DATABASE_URL }}
-          REACT_APP_PROJECT_ID: ${{ secrets.REACT_APP_PROJECT_ID }}
-          REACT_APP_STORAGEBUCKET: ${{ secrets.REACT_APP_STORAGEBUCKET }}
-          REACT_APP_MESSAGING_SENDER_ID: ${{ secrets.REACT_APP_MESSAGING_SENDER_ID }}
-          REACT_APP_APP_ID: ${{ secrets.REACT_APP_APP_ID }}
-          REACT_APP_MEASUREMENT_ID: ${{ secrets.REACT_APP_MEASUREMENT_ID }}
-        run: yarn build
+          VITE_APP_KEY: ${{ secrets.REACT_APP_APP_KEY }}
+          VITE_AUTH_DOMAIN: ${{ secrets.REACT_APP_AUTH_DOMAIN }}
+          VITE_DATABASE_URL: ${{ secrets.REACT_APP_DATABASE_URL }}
+          VITE_PROJECT_ID: ${{ secrets.REACT_APP_PROJECT_ID }}
+          VITE_STORAGEBUCKET: ${{ secrets.REACT_APP_STORAGEBUCKET }}
+          VITE_MESSAGING_SENDER_ID: ${{ secrets.REACT_APP_MESSAGING_SENDER_ID }}
+          VITE_APP_ID: ${{ secrets.REACT_APP_APP_ID }}
+          VITE_MEASUREMENT_ID: ${{ secrets.REACT_APP_MEASUREMENT_ID }}
+        run: npm run build
 
       - name: Deploy to Firebase Hosting
         uses: w9jds/firebase-action@v2.0.0

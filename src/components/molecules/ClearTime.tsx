@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import { FC } from 'react';
 import Box from '@mui/material/Box';
 
 type Props = {
@@ -7,7 +7,7 @@ type Props = {
   seconds: string;
 };
 
-const CleatTime: VFC<Props> = ({ hour, minutes, seconds }) => (
+const CleatTime: FC<Props> = ({ hour, minutes, seconds }) => (
   <Box p={2} fontSize="1.8rem">
     {`クリアタイム：${hour}:${minutes}:${seconds}`}
   </Box>

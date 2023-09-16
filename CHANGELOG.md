@@ -1,19 +1,28 @@
 # CHANGELOG
 
+## v2.0.0（2023/09/16）
+### Updated
+- Node.js、各種ライブラリのアプデ(#88)
+- CRA 構成から Vite 構成に移行(#89)
+
+主要なアプデ内容（上記2つ合わせたもの）
+- Node.js: 14.17.3 -> 18.17.1
+- TypeScript: 4.5.5 -> 5.2.2
+- react-router-dom: 5.3.0 -> 6.15.0
+- Material UI：
+  - core：5.4.2 -> 5.14.8
+  - icon：5.4.2 -> 5.14.8
+- React Konva: 17.0.2-5 -> 18.2.10
+
 ## v1.1.0（2022/02/20）
 ### Updated
 - 各種ライブラリのアプデ(#66)
-  - typescript：4.3.5 → 4.5.5
   - react-script：4.0.3 → 5.0.0
-  - prop-types：15.7.2 → 15.8.1
+  - typescript：4.3.5 → 4.5.5
   - react-router-dom：5.2.0 → 5.3.0
   - Material UI：
     - core：4.9.14 → 5.4.2
     - icon：4.9.1 → 5.4.2
-  - Firebase SDK：8.8.1 → 9.6.7
-  - konva：8.1.1 → 8.3.2
-  - use-image：1.0.5 → 1.0.8
-  - web-vitals：1.0.1 → 2.1.4
 
 ### Development Added
 - Pre Commit 設定追加(#66)

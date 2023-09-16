@@ -1,4 +1,4 @@
-import React, { VFC } from 'react';
+import React, { FC } from 'react';
 import Button from '@mui/material/Button';
 
 type Props = {
@@ -6,7 +6,7 @@ type Props = {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const PrimaryButton: VFC<Props> = ({ text, onClick }) => (
+const PrimaryButton: FC<Props> = ({ text, onClick }) => (
   <Button variant="contained" color="primary" onClick={onClick}>
     {text}
   </Button>
