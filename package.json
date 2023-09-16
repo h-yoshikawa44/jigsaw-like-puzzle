@@ -12,8 +12,8 @@
     "lint:eslint": "eslint \"./src/**/*.{js,jsx,ts,tsx}\"",
     "check:prettier": "prettier --check \"./{public,src}/**/*.{js,jsx,ts,tsx,html,gql,graphql,json}\"",
     "fix": "npm run fix:eslint && npm run fix:prettier",
-    "fix:eslint": "npm run lint:eslint --fix",
-    "fix:prettier": "npm run check:prettier --write",
+    "fix:eslint": "npm run lint:eslint -- --fix",
+    "fix:prettier": "npm run check:prettier -- --write",
     "preinstall": "typesync || echo 'skip typesync'",
     "prepare": "simple-git-hooks || echo 'Can not set git hooks'"
   },
