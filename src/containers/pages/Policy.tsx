@@ -7,7 +7,7 @@ const EnhancedPolicy: FC = () => {
 
   const handleBackTop = useCallback(() => {
     navigate('/');
-  }, [history]);
+  }, [navigate]);
 
   return <Policy handleBackTop={handleBackTop} />;
 };
