@@ -14,6 +14,10 @@
   - icon：5.4.2 -> 5.14.8
 - React Konva: 17.0.2-5 -> 18.2.10
 
+### Development Changed
+- Firebase Hosting の自動デプロイJOBを最新化(#95)
+  - デプロイプレビューが利用できるように
+
 ## v1.1.0（2022/02/20）
 ### Updated
 - 各種ライブラリのアプデ(#66)
