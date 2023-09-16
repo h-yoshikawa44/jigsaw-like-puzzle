@@ -28,5 +28,5 @@ npm run dev
 
 - ブラウザにアクセス
 ```
-localhost:3000
+localhost:4173
 ```
