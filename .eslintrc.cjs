@@ -4,10 +4,12 @@ module.exports = {
     es2021: true,
   },
   extends: [
-    'plugin:react/recommended',
+    'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
+    'plugin:react-hooks/recommended',
     'prettier',
   ],
+  ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
@@ -16,27 +18,11 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['@typescript-eslint', 'import', 'jsx-a11y', 'react', 'react-hooks'],
+  plugins: ['react-refresh'],
   rules: {
-    'no-use-before-define': 'off',
-    'import/extensions': [
-      'error',
-      'ignorePackages',
-      {
-        js: 'never',
-        jsx: 'never',
-        ts: 'never',
-        tsx: 'never',
-      },
+    'react-refresh/only-export-components': [
+      'warn',
+      { allowConstantExport: true },
     ],
-    'react/react-in-jsx-scope': 'off',
-  },
-  settings: {
-    'import/resolver': {
-      node: {
-        extensions: ['.js', '.jsx', '.tsx', '.ts'],
-        paths: ['src'],
-      },
-    },
   },
 };
