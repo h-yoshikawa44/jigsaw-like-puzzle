@@ -25,8 +25,3 @@ npm install
 ```bash
 npm run dev
 ```
-
-- ブラウザにアクセス
-```
-localhost:4173
-```
