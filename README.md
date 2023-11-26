@@ -2,14 +2,14 @@
 
 ## 環境
 base
-- Node.js：18.17.1
+- Node.js：20.9.0
 - TypeScript：5.2.2
 - React：18.2.0
 
 Other major libraries
 - Material UI：
-  - core：5.14.8
-  - icon：5.14.8
+  - core：5.14.18
+  - icon：5.14.18
 - React Konva：18.2.10
 
 ## 開発環境構築
@@ -24,9 +24,4 @@ npm install
 - ローカルサーバ起動
 ```bash
 npm run dev
-```
-
-- ブラウザにアクセス
-```
-localhost:4173
 ```
