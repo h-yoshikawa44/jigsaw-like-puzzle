@@ -2,7 +2,7 @@
 
 ## 環境
 base
-- Node.js：18.17.1
+- Node.js：20.9.0
 - TypeScript：5.2.2
 - React：18.2.0
 
