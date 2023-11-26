@@ -8,8 +8,8 @@ base
 
 Other major libraries
 - Material UI：
-  - core：5.14.8
-  - icon：5.14.8
+  - core：5.14.18
+  - icon：5.14.18
 - React Konva：18.2.10
 
 ## 開発環境構築
