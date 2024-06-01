@@ -2,14 +2,14 @@
 
 ## 環境
 base
-- Node.js：20.9.0
-- TypeScript：5.2.2
-- React：18.2.0
+- Node.js：20.13.0
+- TypeScript：5.4.5
+- React：18.3.1
 
 Other major libraries
-- Material UI：
-  - core：5.14.18
-  - icon：5.14.18
+- MUI：
+  - material：5.15.19
+  - icons-material：5.15.19
 - React Konva：18.2.10
 
 ## 開発環境構築
