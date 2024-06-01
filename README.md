@@ -4,7 +4,7 @@
 base
 - Node.js：20.13.0
 - TypeScript：5.2.2
-- React：18.2.0
+- React：18.3.1
 
 Other major libraries
 - Material UI：
