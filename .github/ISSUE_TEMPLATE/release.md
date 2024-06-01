@@ -10,7 +10,7 @@ title: "[リリース]vX.X.X"
 ## 作業内容
 - [ ] package.json のバージョン更新（lock ファイル反映）
 - [ ] CHANGELOG 更新
-- [ ] develop を main にマージ
+- [ ] PR を main にマージ
 - [ ] main をもとにタグ付け
 - [ ] リリース作成
 - [ ] 動作確認
