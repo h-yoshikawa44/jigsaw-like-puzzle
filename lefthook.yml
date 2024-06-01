@@ -1,0 +1,25 @@
+pre-commit:
+  parallel: true
+  commands:
+    js-ts-fixer:
+      glob: "src/**/*.{js,jsx,ts,tsx}"
+      run: |
+        npx prettier --write --log-level=error {staged_files}
+        npx eslint --fix --quiet {staged_files}
+      stage_fixed: true
+      skip:
+        - merge
+        - rebase
+    formatter:
+      glob: "./**/*.{html,gql,graphql,json}"
+      run: npx prettier --write --log-level=error {staged_files}
+      stage_fixed: true
+      skip:
+        - merge
+        - rebase
+
+prepare-commit-msg:
+  scripts:
+    "extraction-issue-number":
+      interactive: true
+      runner: sh

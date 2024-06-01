@@ -13,7 +13,7 @@
     "fix": "npm run fix:eslint && npm run fix:prettier",
     "fix:eslint": "npm run lint:eslint -- --fix",
     "fix:prettier": "npm run check:prettier -- --write",
-    "prepare": "simple-git-hooks || echo 'Can not set git hooks'"
+    "prepare": "lefthook install || echo 'Can not set git hooks'"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
@@ -41,27 +41,13 @@
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
     "firebase-tools": "^13.10.2",
-    "lint-staged": "^15.1.0",
+    "lefthook": "^1.6.14",
     "prettier": "^3.2.5",
-    "simple-git-hooks": "^2.9.0",
     "typescript": "^5.4.5",
     "vite": "^5.2.12",
     "vite-tsconfig-paths": "^4.3.2"
   },
   "volta": {
     "node": "20.13.0"
-  },
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged",
-    "prepare-commit-msg": "./.githooks/prepare-commit-msg \"$@\""
-  },
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx}": [
-      "prettier --write --loglevel=error",
-      "eslint --fix --quiet"
-    ],
-    "./**/*.{html,gql,graphql,json}": [
-      "prettier --write --loglevel=error"
-    ]
   }
 }
