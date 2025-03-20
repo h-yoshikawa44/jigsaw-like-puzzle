@@ -22,10 +22,10 @@
     "@mui/material": "^6.4.8",
     "firebase": "^10.12.2",
     "just-shuffle": "^4.2.0",
-    "konva": "^9.3.11",
+    "konva": "^9.3.19",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-konva": "^18.2.10",
+    "react-konva": "^19.0.3",
     "react-router-dom": "^7.4.0",
     "use-image": "^1.1.1"
   },
