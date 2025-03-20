@@ -14,14 +14,14 @@ const Policy: FC<Props> = ({ handleBackTop }) => (
     <Typography variant="h4" component="h2">
       当サービス（ Jigsaw Like Puzzle について）
     </Typography>
-    <Typography paragraph>
+    <Typography component="p">
       2020/05/18～5/24で開催された、#web1weekの制作物です。
       <br />
       <Link href="https://crieit.net/boards/web1week-202005">
         １週間でWebサービスを作るイベント - お題「Like」
       </Link>
     </Typography>
-    <Typography paragraph>
+    <Typography component="p">
       好きなもの → 趣味？ → 絵を描くこと（最近描いてないけど） → canvas →
       ただ絵を描くだけじゃつまらない → ジグソーパズル作れそう？
       といった感じで行きつきました。
@@ -34,7 +34,7 @@ const Policy: FC<Props> = ({ handleBackTop }) => (
     <Typography variant="h4" component="h2">
       アクセス解析ツールに関して
     </Typography>
-    <Typography paragraph>
+    <Typography component="p">
       当サービスでは、Google によるアクセス解析ツール「Google
       Analytics」を利用しています。
       <br />
@@ -45,7 +45,7 @@ const Policy: FC<Props> = ({ handleBackTop }) => (
       この機能は Cookie
       を無効にすることで収集を拒否できますので、お使いのブラウザの設定をご確認ください。
     </Typography>
-    <Typography paragraph>
+    <Typography component="p">
       この機能の利用により収集されたデータは、Google
       社のプライバシーポリシーに基づいて管理されています。
       <br />
