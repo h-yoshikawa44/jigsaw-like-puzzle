@@ -39,7 +39,7 @@
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
-    "firebase-tools": "^13.10.2",
+    "firebase-tools": "^13.34.0",
     "lefthook": "^1.6.14",
     "prettier": "^3.2.5",
     "typescript": "^5.8.2",
