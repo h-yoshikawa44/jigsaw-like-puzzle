@@ -4,7 +4,7 @@
 base
 - Node.js：22.13.1
 - TypeScript：5.4.5
-- React：18.3.1
+- React：19.0.0
 
 Other major libraries
 - MUI：
