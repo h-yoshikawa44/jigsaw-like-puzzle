@@ -1,9 +1,20 @@
 # CHANGELOG
 
+## v2.3.0（2025/03/20）
+### Updated
+- Node.js、各種ライブラリアプデ(#117)
+  - Node.js: 20.13.0 -> 22.13.1
+  - React: 18.3.1 -> 19.0.0
+  - react-router-dom: 6.23.1 -> 7.4.0
+  - Material UI：
+    - core：5.15.19 -> 6.4.8
+    - icon：5.15.19 -> 6.4.8
+
 ## v2.2.2（2024/06/01）
 ### Updated
 - Node.js、各種ライブラリアプデ(#111)
   - Node.js: 20.9.0 -> 20.13.0
+  - React: 18.2.0 -> 18.3.1
   - react-router-dom: 6.20.0 -> 6.23.1
   - Material UI：
     - core：5.14.18 -> 5.15.19
