@@ -25,6 +25,9 @@ jobs:
       - name: Package Clean Install
         run: npm ci
 
+      - name: Typecheck
+        run: npm run typecheck
+
       - name: Lint & Format Check
         run: npm run lint-check
 
