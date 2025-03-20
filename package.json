@@ -20,7 +20,7 @@
     "@emotion/styled": "^11.14.0",
     "@mui/icons-material": "^6.4.8",
     "@mui/material": "^6.4.8",
-    "firebase": "^10.12.2",
+    "firebase": "^11.4.0",
     "just-shuffle": "^4.2.0",
     "konva": "^9.3.19",
     "react": "^19.0.0",
