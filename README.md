@@ -8,9 +8,9 @@ base
 
 Other major libraries
 - MUI：
-  - material：5.15.19
-  - icons-material：5.15.19
-- React Konva：18.2.10
+  - material
+  - icons-material
+- React Konva
 
 ## 開発環境構築
 - .env を作成
