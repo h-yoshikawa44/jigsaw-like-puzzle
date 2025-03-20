@@ -13,7 +13,7 @@ const useCounter = (): {
     minutes: '00',
     seconds: '00',
   });
-  const intervalId = useRef<NodeJS.Timeout>();
+  const intervalId = useRef<NodeJS.Timeout>(null);
 
   const countUp = useCallback(() => {
     setCountTime((prev) => prev + 1);

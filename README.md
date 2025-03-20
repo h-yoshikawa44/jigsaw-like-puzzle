@@ -2,15 +2,15 @@
 
 ## 環境
 base
-- Node.js：20.13.0
-- TypeScript：5.4.5
-- React：18.3.1
+- Node.js：22.13.1
+- TypeScript：5.8.2
+- React：19.0.0
 
 Other major libraries
 - MUI：
-  - material：5.15.19
-  - icons-material：5.15.19
-- React Konva：18.2.10
+  - material
+  - icons-material
+- React Konva
 
 ## 開発環境構築
 - .env を作成
