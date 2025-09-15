@@ -49,6 +49,6 @@
     "vite-tsconfig-paths": "^5.1.4"
   },
   "volta": {
-    "node": "22.13.1"
+    "node": "22.19.0"
   }
 }
