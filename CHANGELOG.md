@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## v3.2.0（2025/12/14）
+### Updated
+- 各種ライブラリアプデ(#145)
+  - React: 19.1.1 -> 19.2.3
+  - react-router-dom: 7.9.1 -> 7.10.1
+  - Material UI：
+    - core：7.3.2 -> 7.3.6
+    - icon：7.3.2 -> 7.3.6
+
+### Development Changed
+- Node.js バージョン管理を mise へ移行(#145)
+- GHA のセキュリティ改善(#145)
+
 ## v3.1.0（2025/09/15）
 ### Updated
 - Node.js、各種ライブラリアプデ(#132)
