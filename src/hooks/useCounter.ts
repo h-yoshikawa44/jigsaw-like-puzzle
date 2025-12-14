@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useCallback } from 'react';
 import { Time } from 'models/Time';
 
 const useCounter = (): {
@@ -7,7 +7,7 @@ const useCounter = (): {
   countStop: VoidFunction;
   countReset: VoidFunction;
 } => {
-  const [countTime, setCountTime] = useState<number>(0);
+  const [_, setCountTime] = useState<number>(0);
   const [time, setTime] = useState<Time>({
     hour: '00',
     minutes: '00',
@@ -16,16 +16,16 @@ const useCounter = (): {
   const intervalId = useRef<NodeJS.Timeout>(null);
 
   const countUp = useCallback(() => {
-    setCountTime((prev) => prev + 1);
-  }, []);
-
-  useEffect(() => {
-    setTime({
-      hour: `00${Math.floor(countTime / 60 / 60)}`.slice(-2),
-      minutes: `00${Math.floor(countTime / 60)}`.slice(-2),
-      seconds: `00${countTime % 60}`.slice(-2),
+    setCountTime((prev) => {
+      const countTime = prev + 1;
+      setTime({
+        hour: `00${Math.floor(countTime / 60 / 60)}`.slice(-2),
+        minutes: `00${Math.floor(countTime / 60)}`.slice(-2),
+        seconds: `00${countTime % 60}`.slice(-2),
+      });
+      return countTime;
     });
-  }, [countTime]);
+  }, []);
 
   const countStart = useCallback(() => {
     intervalId.current = setInterval(countUp, 1000);
