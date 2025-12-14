@@ -10,7 +10,7 @@
 ## 環境
 base
 - Node.js：24.11.1
-- TypeScript：5.9.2
+- TypeScript：5.9.3
 - React：19.2.3
 
 Other major libraries
