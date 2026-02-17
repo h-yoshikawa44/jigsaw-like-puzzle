@@ -1,13 +1,21 @@
 # CHANGELOG
 
+## v3.3.0（2026/02/18）
+### Updated
+Node.js、各種パッケージのアプデ(#155)
+- Node.js: 22.19.0 -> 24.13.0
+- React: 19.2.3 -> 19.2.4
+- react-router-dom: 7.10.1 -> 7.13.0
+- Material UI: 7.3.6 -> 7.3.7
+
 ## v3.2.0（2025/12/14）
 ### Updated
-- 各種ライブラリアプデ(#145)
-  - React: 19.1.1 -> 19.2.3
-  - react-router-dom: 7.9.1 -> 7.10.1
-  - Material UI：
-    - core：7.3.2 -> 7.3.6
-    - icon：7.3.2 -> 7.3.6
+各種ライブラリアプデ(#145)
+- React: 19.1.1 -> 19.2.3
+- react-router-dom: 7.9.1 -> 7.10.1
+- Material UI：
+  - core：7.3.2 -> 7.3.6
+  - icon：7.3.2 -> 7.3.6
 
 ### Development Changed
 - Node.js バージョン管理を mise へ移行(#145)
@@ -15,42 +23,42 @@
 
 ## v3.1.0（2025/09/15）
 ### Updated
-- Node.js、各種ライブラリアプデ(#132)
-  - Node.js: 22.13.1 -> 22.19.0
-  - React: 19.0.0 -> 19.1.1
-  - react-router-dom: 7.4.0 -> 7.9.1
-  - Material UI：
-    - core：6.4.8 -> 7.3.2
-    - icon：6.4.8 -> 7.3.2
+Node.js、各種ライブラリアプデ(#132)
+- Node.js: 22.13.1 -> 22.19.0
+- React: 19.0.0 -> 19.1.1
+- react-router-dom: 7.4.0 -> 7.9.1
+- Material UI：
+  - core：6.4.8 -> 7.3.2
+  - icon：6.4.8 -> 7.3.2
 
 ## v3.0.0（2025/03/20）
 ### Updated
-- Node.js、各種ライブラリアプデ(#117)
-  - Node.js: 20.13.0 -> 22.13.1
-  - React: 18.3.1 -> 19.0.0
-  - react-router-dom: 6.23.1 -> 7.4.0
-  - Material UI：
-    - core：5.15.19 -> 6.4.8
-    - icon：5.15.19 -> 6.4.8
+Node.js、各種ライブラリアプデ(#117)
+- Node.js: 20.13.0 -> 22.13.1
+- React: 18.3.1 -> 19.0.0
+- react-router-dom: 6.23.1 -> 7.4.0
+- Material UI：
+  - core：5.15.19 -> 6.4.8
+  - icon：5.15.19 -> 6.4.8
 
 ## v2.2.2（2024/06/01）
 ### Updated
-- Node.js、各種ライブラリアプデ(#111)
-  - Node.js: 20.9.0 -> 20.13.0
-  - React: 18.2.0 -> 18.3.1
-  - react-router-dom: 6.20.0 -> 6.23.1
-  - Material UI：
-    - core：5.14.18 -> 5.15.19
-    - icon：5.14.18 -> 5.15.19
+Node.js、各種ライブラリアプデ(#111)
+- Node.js: 20.9.0 -> 20.13.0
+- React: 18.2.0 -> 18.3.1
+- react-router-dom: 6.20.0 -> 6.23.1
+- Material UI：
+  - core：5.14.18 -> 5.15.19
+  - icon：5.14.18 -> 5.15.19
 
 ## v2.1.0（2023/11/26）
 ### Updated
-- Node.js、各種ライブラリアプデ(#100)
-  - Node.js: 18.17.1 -> 20.9.0
-  - react-router-dom: 6.15.0 -> 6.20.0
-  - Material UI：
-    - core：5.14.8 -> 5.14.18
-    - icon：5.14.8 -> 5.14.18
+Node.js、各種ライブラリアプデ(#100)
+- Node.js: 18.17.1 -> 20.9.0
+- react-router-dom: 6.15.0 -> 6.20.0
+- Material UI：
+  - core：5.14.8 -> 5.14.18
+  - icon：5.14.8 -> 5.14.18
 
 ## v2.0.0（2023/09/16）
 ### Updated
@@ -72,13 +80,13 @@
 
 ## v1.1.0（2022/02/20）
 ### Updated
-- 各種ライブラリのアプデ(#66)
-  - react-script：4.0.3 → 5.0.0
-  - typescript：4.3.5 → 4.5.5
-  - react-router-dom：5.2.0 → 5.3.0
-  - Material UI：
-    - core：4.9.14 → 5.4.2
-    - icon：4.9.1 → 5.4.2
+各種ライブラリのアプデ(#66)
+- react-script：4.0.3 → 5.0.0
+- typescript：4.3.5 → 4.5.5
+- react-router-dom：5.2.0 → 5.3.0
+- Material UI：
+  - core：4.9.14 → 5.4.2
+  - icon：4.9.1 → 5.4.2
 
 ### Development Added
 - Pre Commit 設定追加(#66)
@@ -93,13 +101,13 @@
 
 ## v0.2.0（2021/08/03）
 ### Updated
-- ライブラリ全体のバージョンアップ(#50)
-  - Node.js 12.18.3 → 14.17.3
-  - React 16.13.1 → 17.0.2
-  - React Konva 16.13.0-3 → 17.0.2-5
-  - Material UI
-    - core 4.9.14 → 4.12.3
-    - icon 4.9.1 → 4.11.2
+ライブラリ全体のバージョンアップ(#50)
+- Node.js 12.18.3 → 14.17.3
+- React 16.13.1 → 17.0.2
+- React Konva 16.13.0-3 → 17.0.2-5
+- Material UI
+  - core 4.9.14 → 4.12.3
+  - icon 4.9.1 → 4.11.2
 
 ### Development Changed
 - デプロイ自動化(#21)
@@ -117,7 +125,7 @@
 ## v0.1.4（2020/05/28）
 ## Development Fixed
 - Google Analytics がちゃんと動いてない不具合対応(#17)
-  - Firebase SDK を予約済み URL でなく、ライブラリから使用するよう変更
+- Firebase SDK を予約済み URL でなく、ライブラリから使用するよう変更
   - firebase.analytics() を追加
 
 ## v0.1.3（2020/05/26）
@@ -138,11 +146,11 @@
 
 ## v0.1.0（2020/05/23）
 ### Added
-- 基本的なパズルの仕組みを作成(#3, #8)
-  - 難易度選択
-  - 難易度（初級、中級、上級）に応じたパズルロジック
-  - ポーズ
-  - リザルト
+基本的なパズルの仕組みを作成(#3, #8)
+- 難易度選択
+- 難易度（初級、中級、上級）に応じたパズルロジック
+- ポーズ
+- リザルト
 
 - ポリシーページ作成
 
@@ -150,8 +158,8 @@
 - ドラッグ中のピースが必ず前面に来るように対応(#12)
 
 ### Development Added
-- Firebase との連携(#10)
-  - Firebase Hosting
+Firebase との連携(#10)
+- Firebase Hosting
 
 2020/05/18～5/24 で開催された #web1week 投稿作品。
 最低限遊べる程度の実装。
