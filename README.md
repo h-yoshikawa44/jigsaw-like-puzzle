@@ -11,7 +11,7 @@
 base
 - Node.js：24.13.0
 - TypeScript：5.9.3
-- React：19.2.3
+- React：19.2.4
 
 Other major libraries
 - MUI：
