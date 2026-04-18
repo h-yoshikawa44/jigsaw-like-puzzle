@@ -1,5 +1,5 @@
 import { useState, useRef, useCallback } from 'react';
-import { Time } from 'models/Time';
+import { Time } from '@/models/Time';
 
 const useCounter = (): {
   time: Time;
@@ -13,7 +13,7 @@ const useCounter = (): {
     minutes: '00',
     seconds: '00',
   });
-  const intervalId = useRef<NodeJS.Timeout>(null);
+  const intervalId = useRef<ReturnType<typeof setTimeout>>(null);
 
   const countUp = useCallback(() => {
     setCountTime((prev) => {

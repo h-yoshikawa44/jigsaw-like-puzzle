@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Konva from 'konva';
 import { Group, Image, Layer, Line, Rect, Stage } from 'react-konva';
-import { Piece } from 'models/Piece';
+import { Piece } from '@/models/Piece';
 
 type Props = {
   image?: HTMLImageElement;

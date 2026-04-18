@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Box from '@mui/material/Box';
 import TimerIcon from '@mui/icons-material/TimerOutlined';
-import Counter from 'components/atoms/Counter';
+import Counter from '@/components/atoms/Counter';
 
 type Props = {
   hour: string;
@@ -10,7 +10,7 @@ type Props = {
 };
 
 const TimeCounter: FC<Props> = ({ hour, minutes, seconds }) => (
-  <Box m={2} fontSize="1.8rem">
+  <Box sx={{ m: 2, fontSize: '1.8rem' }}>
     <TimerIcon style={{ paddingRight: '5px' }} />
     <Counter hour={hour} minutes={minutes} seconds={seconds} />
   </Box>

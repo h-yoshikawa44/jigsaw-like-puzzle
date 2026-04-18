@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import Button from '@mui/material/Button';
-import { Diffculty } from 'models/Diffculty';
+import { Diffculty } from '@/models/Diffculty';
 
 type Props = {
   difficulty: Diffculty;

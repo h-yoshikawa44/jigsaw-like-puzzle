@@ -14,7 +14,7 @@ const Policy: FC<Props> = ({ handleBackTop }) => (
     <Typography variant="h4" component="h2">
       当サービス（ Jigsaw Like Puzzle について）
     </Typography>
-    <Box display="flex" flexDirection="column" rowGap="12px">
+    <Box sx={{ display: 'flex', flexDirection: 'column', rowGap: '12px' }}>
       <Typography component="p">
         2020/05/18～5/24で開催された、#web1week の制作物です。
         <br />
@@ -35,7 +35,7 @@ const Policy: FC<Props> = ({ handleBackTop }) => (
     <Typography variant="h4" component="h2" sx={{ marginTop: '16px' }}>
       アクセス解析ツールに関して
     </Typography>
-    <Box display="flex" flexDirection="column" rowGap="12px">
+    <Box sx={{ display: 'flex', flexDirection: 'column', rowGap: '12px' }}>
       <Typography component="p">
         当サービスでは、Google によるアクセス解析ツール「Google
         Analytics」を利用しています。
@@ -60,7 +60,7 @@ const Policy: FC<Props> = ({ handleBackTop }) => (
       </Link>
     </p>
     <Link href="https://policies.google.com/">Google ポリシーと規約</Link>
-    <Box mt={6}>
+    <Box sx={{ mt: 6 }}>
       <Button variant="contained" color="primary" onClick={handleBackTop}>
         パズルに戻る
       </Button>

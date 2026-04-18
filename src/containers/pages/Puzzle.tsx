@@ -1,10 +1,10 @@
 import { FC, useState, useEffect } from 'react';
 import useImage from 'use-image';
-import Puzzle from 'components/pages/Puzzle';
-import { Diffculty } from 'models/Diffculty';
-import useCounter from 'hooks/useCounter';
-import usePuzzle from 'hooks/usePuzzle';
-import puzzleImg from 'assets/photo0000_6339.png';
+import Puzzle from '@/components/pages/Puzzle';
+import { Diffculty } from '@/models/Diffculty';
+import useCounter from '@/hooks/useCounter';
+import usePuzzle from '@/hooks/usePuzzle';
+import puzzleImg from '@/assets/photo0000_6339.png';
 
 const EnhancedPuzzle: FC = () => {
   const [image, status] = useImage(puzzleImg);

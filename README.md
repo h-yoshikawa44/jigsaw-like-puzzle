@@ -9,9 +9,9 @@
 
 ## 環境
 base
-- Node.js：24.13.0
-- TypeScript：5.9.3
-- React：19.2.4
+- Node.js：24.15.0
+- TypeScript：6.0.2
+- React：19.2.5
 
 Other major libraries
 - MUI：

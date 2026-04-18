@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Puzzle from 'containers/pages/Puzzle';
-import Policy from 'containers/pages/Policy';
+import Puzzle from '@/containers/pages/Puzzle';
+import Policy from '@/containers/pages/Policy';
 
 const AppRoute: FC = () => (
   <Routes>
