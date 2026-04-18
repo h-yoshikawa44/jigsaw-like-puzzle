@@ -1,6 +1,6 @@
 import { FC, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Policy from 'components/pages/Policy';
+import Policy from '@/components/pages/Policy';
 
 const EnhancedPolicy: FC = () => {
   const navigate = useNavigate();

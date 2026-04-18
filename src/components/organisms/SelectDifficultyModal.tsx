@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
-import DifficultyButton from 'components/atoms/DifficultyButton';
-import { Diffculty } from 'models/Diffculty';
+import DifficultyButton from '@/components/atoms/DifficultyButton';
+import { Diffculty } from '@/models/Diffculty';
 
 type Props = {
   open: boolean;

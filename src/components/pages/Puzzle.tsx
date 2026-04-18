@@ -1,14 +1,14 @@
 import { FC } from 'react';
 import Divider from '@mui/material/Divider';
 import Konva from 'konva';
-import PuzzleGuide from 'components/organisms/PuzzleGuide';
-import SelectDifficultyModal from 'components/organisms/SelectDifficultyModal';
-import CompleteModal from 'components/organisms/CompleteModal';
-import PauseModal from 'components/organisms/PauseModal';
-import PuzzleCanvas from 'components/organisms/PuzzleCanvas';
-import { Diffculty } from 'models/Diffculty';
-import { Piece } from 'models/Piece';
-import { Time } from 'models/Time';
+import PuzzleGuide from '@/components/organisms/PuzzleGuide';
+import SelectDifficultyModal from '@/components/organisms/SelectDifficultyModal';
+import CompleteModal from '@/components/organisms/CompleteModal';
+import PauseModal from '@/components/organisms/PauseModal';
+import PuzzleCanvas from '@/components/organisms/PuzzleCanvas';
+import { Diffculty } from '@/models/Diffculty';
+import { Piece } from '@/models/Piece';
+import { Time } from '@/models/Time';
 
 type Props = {
   image?: HTMLImageElement;

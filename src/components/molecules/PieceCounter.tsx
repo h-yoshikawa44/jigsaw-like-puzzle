@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Box from '@mui/material/Box';
 import ExtensionIcon from '@mui/icons-material/Extension';
-import ScoreCounter from 'components/atoms/ScoreCounter';
+import ScoreCounter from '@/components/atoms/ScoreCounter';
 
 type Props = {
   matchPieceCount: number;

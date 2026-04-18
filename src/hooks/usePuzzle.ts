@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from 'react';
 import Konva from 'konva';
-import { EASY, NORMAL, HARD } from 'constants/puzzle';
-import { Diffculty } from 'models/Diffculty';
-import { Piece } from 'models/Piece';
-import { getShuffledList } from 'util/getShuffledList';
+import { EASY, NORMAL, HARD } from '@/constants/puzzle';
+import { Diffculty } from '@/models/Diffculty';
+import { Piece } from '@/models/Piece';
+import { getShuffledList } from '@/util/getShuffledList';
 
 type PieceCount = {
   x: number;

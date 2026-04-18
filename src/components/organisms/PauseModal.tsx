@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Box from '@mui/material/Box';
 import Fade from '@mui/material/Fade';
 import Modal from '@mui/material/Modal';
-import PrimaryButton from 'components/atoms/PrimaryButton';
+import PrimaryButton from '@/components/atoms/PrimaryButton';
 
 type Props = {
   open: boolean;

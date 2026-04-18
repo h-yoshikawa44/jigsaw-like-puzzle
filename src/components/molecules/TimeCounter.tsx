@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import Box from '@mui/material/Box';
 import TimerIcon from '@mui/icons-material/TimerOutlined';
-import Counter from 'components/atoms/Counter';
+import Counter from '@/components/atoms/Counter';
 
 type Props = {
   hour: string;

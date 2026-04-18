@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import Box from '@mui/material/Box';
-import PieceCounter from 'components/molecules/PieceCounter';
-import TimeCounter from 'components/molecules/TimeCounter';
-import PrimaryButton from 'components/atoms/PrimaryButton';
+import PieceCounter from '@/components/molecules/PieceCounter';
+import TimeCounter from '@/components/molecules/TimeCounter';
+import PrimaryButton from '@/components/atoms/PrimaryButton';
 
 type Props = {
   matchPieceCount: number;
