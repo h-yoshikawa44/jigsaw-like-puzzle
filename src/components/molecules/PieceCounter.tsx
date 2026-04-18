@@ -9,7 +9,7 @@ type Props = {
 };
 
 const PieceCounter: FC<Props> = ({ matchPieceCount, pieceTotalCount }) => (
-  <Box m={2} fontSize="1.8rem">
+  <Box sx={{ m: 2, fontSize: '1.8rem' }}>
     <ExtensionIcon style={{ paddingRight: '5px' }} />
     <ScoreCounter count={matchPieceCount} totalCount={pieceTotalCount} />
   </Box>

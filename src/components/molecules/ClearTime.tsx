@@ -8,7 +8,7 @@ type Props = {
 };
 
 const CleatTime: FC<Props> = ({ hour, minutes, seconds }) => (
-  <Box p={2} fontSize="1.8rem">
+  <Box sx={{ p: 2, fontSize: '1.8rem' }}>
     {`クリアタイム：${hour}:${minutes}:${seconds}`}
   </Box>
 );

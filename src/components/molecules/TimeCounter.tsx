@@ -10,7 +10,7 @@ type Props = {
 };
 
 const TimeCounter: FC<Props> = ({ hour, minutes, seconds }) => (
-  <Box m={2} fontSize="1.8rem">
+  <Box sx={{ m: 2, fontSize: '1.8rem' }}>
     <TimerIcon style={{ paddingRight: '5px' }} />
     <Counter hour={hour} minutes={minutes} seconds={seconds} />
   </Box>

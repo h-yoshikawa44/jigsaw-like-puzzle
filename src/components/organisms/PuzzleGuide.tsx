@@ -21,13 +21,13 @@ const PuzzleGuide: FC<Props> = ({
   seconds,
   onPause,
 }) => (
-  <Box display="flex" justifyContent="center" alignItems="center">
+  <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
     <PieceCounter
       matchPieceCount={matchPieceCount}
       pieceTotalCount={pieceTotalCount}
     />
     <TimeCounter hour={hour} minutes={minutes} seconds={seconds} />
-    <Box m={2}>
+    <Box sx={{ m: 2 }}>
       <PrimaryButton text="一時停止" onClick={onPause} />
     </Box>
   </Box>
