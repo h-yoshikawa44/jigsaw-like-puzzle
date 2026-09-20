@@ -22,10 +22,10 @@
     "@mui/icons-material": "^9.4.0",
     "@mui/material": "^9.4.0",
     "firebase": "^12.12.0",
-    "konva": "^10.2.5",
+    "konva": "^10.5.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
-    "react-konva": "^19.2.3",
+    "react-konva": "^19.2.7",
     "react-router-dom": "^7.18.3",
     "use-image": "^1.1.4"
   },
