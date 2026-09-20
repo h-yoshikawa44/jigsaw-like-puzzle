@@ -9,7 +9,7 @@
 
 ## 環境
 base
-- Node.js：24.15.0
+- Node.js：24.21.0
 - TypeScript：6.0.2
 - React：19.2.5
 
