@@ -1,11 +1,12 @@
 import globals from 'globals';
+import { defineConfig } from 'eslint/config';
 import eslint from '@eslint/js';
 import tsEslint from 'typescript-eslint';
 import reactRefresh from 'eslint-plugin-react-refresh';
 import reactHooks from 'eslint-plugin-react-hooks';
 import configPrettier from 'eslint-config-prettier';
 
-export default tsEslint.config(
+export default defineConfig(
   eslint.configs.recommended,
   tsEslint.configs.recommended,
   {
